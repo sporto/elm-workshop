@@ -8,5 +8,7 @@
 	* [Setup](02-hello-world/01-setup.md)
 	* [First app](02-hello-world/02-first-app.md)
 	* [Exercise](02-hello-world/03-exercise.md)
+* The Elm Architecture
+	* [Introduction](03-tea/01-intro.md)
 
 
