@@ -1,4 +1,7 @@
-# The Elm Architecture
++++
+title       = "The Elm Architecture"
+weight      = 1
++++
 
 In Elm most applications are build using a pattern called **The Elm Architecture**. If you have used Redux this architecture will be very familiar.
 

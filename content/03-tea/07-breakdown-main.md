@@ -1,8 +1,11 @@
-# Program
++++
+title       = "Program"
+weight      = 7
++++
 
 Lastly we have:
 
-```elm
+```
 subscriptions model =
     Sub.none
 

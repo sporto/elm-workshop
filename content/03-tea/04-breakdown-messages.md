@@ -1,4 +1,7 @@
-# Messages
++++
+title       = "Messages"
+weight      = 4
++++
 
 The next part are the messages in our application:
 

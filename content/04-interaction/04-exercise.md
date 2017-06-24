@@ -1,4 +1,7 @@
-# Exercise
++++
+title       = "Exercise"
+weight      = 4
++++
 
 - Add a decrease button.
 

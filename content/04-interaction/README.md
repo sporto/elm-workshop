@@ -1,1 +1,0 @@
-This chapter covers adding user interaction to an Elm application.

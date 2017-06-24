@@ -1,8 +1,11 @@
-# TEA Breakdown
++++
+title       = "TEA Breakdown"
+weight      = 3
++++
 
 ## Application Model
 
-```elm
+```
 type alias Model =
     String
 ```

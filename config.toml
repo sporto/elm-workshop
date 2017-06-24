@@ -1,3 +1,11 @@
 baseURL = "http://example.org/"
 languageCode = "en-us"
 title = "Elm Workshop"
+theme = "docdock"
+
+[params]
+  editURL = "https://github.com/matcornic/hugo-learn-doc/edit/master/content/"
+  description = "Elm Workshop"
+  author = "Sebastian Porto"
+  autoNav = true
+  search = true

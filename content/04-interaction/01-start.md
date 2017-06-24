@@ -1,3 +1,9 @@
++++
+title       = "Start"
+weight      = 1
++++
+
+
 For this chapter we will create a simple counter application. Copy this into `Counter.elm`:
 
 ```

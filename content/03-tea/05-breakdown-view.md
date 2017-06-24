@@ -1,8 +1,11 @@
-# View
++++
+title       = "View"
+weight      = 5
++++
 
 The next part is the view:
 
-```elm
+```
 view : Model -> Html Msg
 view model =
     div [] [ text model ]

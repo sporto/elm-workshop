@@ -1,4 +1,7 @@
-# Setup
++++
+title       = "Setup"
+weight      = 1
++++
 
 In an empty directory run:
 

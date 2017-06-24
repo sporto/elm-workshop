@@ -1,4 +1,7 @@
-## Messages
++++
+title       = "Messages"
+weight      = 2
++++
 
 To get this button to do something we need our view to trigger a message when the button is clicked.
 
@@ -16,13 +19,13 @@ Note how this **constructor** `ChangeCount Int` can take a payload, in this case
 
 Let's trigger this new message from the view. Add a new import to the application:
 
-```elm
+```
 import Html.Events exposing (onClick)
 ```
 
 Change `btnIncrease` to:
 
-```elm
+```
 btnIncrease =
     button [ onClick (ChangeCount 1) ] [ text "Increase" ]
 ```

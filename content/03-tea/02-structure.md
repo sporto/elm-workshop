@@ -1,8 +1,11 @@
-# A TEA application
++++
+title       = "Structure"
+weight      = 2
++++
 
 Here is a basic application using the Elm architecture. 
 
-```elm
+```
 module Main exposing (..)
 
 import Html exposing (Html, div, text)

@@ -1,8 +1,7 @@
 +++
 title       = "Why Elm"
+weight      = 2
 +++
-
-# Why Elm?
 
 ## Safe and Robust
 

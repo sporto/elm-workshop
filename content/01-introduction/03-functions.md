@@ -1,4 +1,7 @@
-# Functions
++++
+title       = "Functions"
+weight      = 3
++++
 
 In Elm functions are a bit different that languages like JavaScript, so is worth familisaring yourself with how they are written and called in Elm.
 

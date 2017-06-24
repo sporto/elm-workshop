@@ -1,8 +1,7 @@
 +++
 title       = "What is Elm"
+weight      = 1
 +++
-
-# What is Elm?
 
 Elm is a pure functional programming language that compiles to JavaScript.
 

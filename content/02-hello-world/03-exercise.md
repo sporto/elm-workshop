@@ -1,8 +1,11 @@
-# Exercise
++++
+title       = "Exercise"
+weight      = 3
++++
 
 In the following program implement the commented parts:
 
-```elm
+```
 module Hello exposing (..)
 
 import Html exposing (div, text)

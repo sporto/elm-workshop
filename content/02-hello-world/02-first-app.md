@@ -1,8 +1,11 @@
-# Your first app
++++
+title       = "Your first app"
+weight      = 2
++++
 
 In this folder add file `Hello.elm`:
 
-```elm
+```
 module Hello exposing (..)
 
 import Html exposing (div, text)

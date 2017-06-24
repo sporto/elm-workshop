@@ -1,4 +1,7 @@
-# Update
++++
+title       = "Update"
+weight      = 6
++++
 
 The next part is the **udpate** function:
 
