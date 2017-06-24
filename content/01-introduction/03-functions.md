@@ -79,7 +79,5 @@ sayHello "Sam"
 
 Should print `Hello Sam`.
 
----
-
-Type `:exit` to exit the repl.
+{{% panel %}}Type `:exit` to exit the repl.{{% /panel %}}
 

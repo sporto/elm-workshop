@@ -4,8 +4,16 @@ title = "Elm Workshop"
 theme = "docdock"
 
 [params]
-  editURL = "https://github.com/matcornic/hugo-learn-doc/edit/master/content/"
+  editURL = "https://github.com/sporto/elm-workshop"
   description = "Elm Workshop"
   author = "Sebastian Porto"
   autoNav = true
-  search = true
+  noHomeIcon = true
+  noSearch = true
+
+[[menu.shortcuts]]
+pre = "<h3>More</h3>"
+name = "<i class='fa fa-github'></i> Github repo"
+identifier = "ds"
+url = "https://github.com/sporto/elm-workshop"
+weight = 10
