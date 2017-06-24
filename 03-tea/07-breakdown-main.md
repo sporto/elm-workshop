@@ -20,6 +20,6 @@ main =
         }
 ```
 
-## subscriptions
+## Subscriptions
 
 ## Html.program

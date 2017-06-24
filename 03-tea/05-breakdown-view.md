@@ -5,7 +5,7 @@ The next part is the view:
 ```elm
 view : Model -> Html Msg
 view model =
-    div [] [ text "Hello" ]
+    div [] [ text model ]
 ```
 
 This is a function that take a `Model` and return `Html`.

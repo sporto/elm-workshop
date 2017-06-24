@@ -2,8 +2,8 @@
 
 Here is a basic application using the Elm architecture. 
 
-    ```elm
-    module Main exposing (..)
+```elm
+module Main exposing (..)
 
 import Html exposing (Html, div, text)
 
@@ -17,7 +17,7 @@ type alias Model =
 
 init : ( Model, Cmd msg )
 init =
-    ( "", Cmd.none )
+    ( "Hello", Cmd.none )
 
 -- Messages
 
@@ -31,7 +31,7 @@ type Msg
 
 view : Model -> Html Msg
 view model =
-    div [] [ text "Hello" ]
+    div [] [ text model ]
 
 
 

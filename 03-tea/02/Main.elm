@@ -12,7 +12,7 @@ type alias Model =
 
 init : ( Model, Cmd msg )
 init =
-    ( "", Cmd.none )
+    ( "Hello", Cmd.none )
 
 
 
@@ -29,7 +29,7 @@ type Msg
 
 view : Model -> Html Msg
 view model =
-    div [] [ text "Hello" ]
+    div [] [ text model ]
 
 
 

@@ -23,7 +23,7 @@ Our application model could be anything:
 ```
 init : ( Model, Cmd msg )
 init =
-    ( "", Cmd.none )
+    ( "Hello", Cmd.none )
 ```
 
 `init` is a function that returns the initial state of the application. The first line `init : ( Model, Cmd msg )` is the function signature. This is saying that `init` return a tuple of `Model` and `Cmd`.
