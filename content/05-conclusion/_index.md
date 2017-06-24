@@ -1,3 +1,8 @@
+---
+title: Conclusion
+weight: 5
+---
+
 This is the end. We hope you enjoyed this workshop. Please send corrections and feedback to <https://github.com/sporto/elm-workshop>.
 
 ## Further Learning
