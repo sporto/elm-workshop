@@ -21,3 +21,7 @@ gitbook serve
 Open  http://localhost:4000
 
 ### Build
+
+```
+gitbook build
+```
