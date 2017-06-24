@@ -2,6 +2,8 @@ baseURL = "http://example.org/"
 languageCode = "en-us"
 title = "Elm Workshop"
 theme = "docdock"
+uglyurls = true
+relativeURLs = true
 
 [params]
   editURL = "https://github.com/sporto/elm-workshop"

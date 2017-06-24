@@ -6,22 +6,16 @@ https://docs.google.com/document/d/14Mc2P8SIoTF-vRcWBXpdjzFpL6rA-c_aPgkw3oG4cPo/
 
 ## Authoring
 
-Install gitbook-cli
-
-```
-npm install gitbook-cli -g
-```
+Install [Hugo](https://gohugo.io)
 
 ### Preview
 
 ```
-gitbook serve
+hugo serve
 ```
-
-Open  http://localhost:4000
 
 ### Build
 
 ```
-gitbook build
+hugo
 ```
