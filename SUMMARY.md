@@ -21,5 +21,7 @@
 	* [Start](04-interaction/01-start.md)
 	* [Message](04-interaction/02-message.md)
 	* [Update](04-interaction/03-update.md)
+	* [Exercise](04-interaction/03-exercise.md)
+* [Conclusion](05-conclusion.md)
 
 
