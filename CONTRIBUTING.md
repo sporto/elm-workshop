@@ -19,3 +19,7 @@ hugo serve
 ```
 hugo
 ```
+
+### Editing
+
+All content for the worshop is in `/content`
