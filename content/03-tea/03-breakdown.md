@@ -5,7 +5,7 @@ weight      = 3
 
 ## Application Model
 
-```
+```elm
 type alias Model =
     String
 ```
@@ -23,7 +23,7 @@ Our application model could be anything:
 
 ## Initial model
 
-```
+```elm
 init : ( Model, Cmd msg )
 init =
     ( "Hello", Cmd.none )

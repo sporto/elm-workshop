@@ -5,7 +5,7 @@ weight      = 4
 
 The next part are the messages in our application:
 
-```
+```elm
 type Msg
     = NoOp
 ```
@@ -16,7 +16,7 @@ We only have one message, which is `NoOp` for no operation.
 
 A union type is a type that could be one of several possibilities. e.g. 
 
-```
+```elm
 type Answer = Yes | No
 ```
 

@@ -7,7 +7,7 @@ Using the TEA program we just made:
 
 - Change the `Model` to a record. e.g.
 
-```
+```elm
 type alias Model = {
     message: String
 }

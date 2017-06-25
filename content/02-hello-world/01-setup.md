@@ -5,7 +5,7 @@ weight      = 1
 
 In an empty directory run:
 
-```
+```bash
 elm-package install -y
 ```
 

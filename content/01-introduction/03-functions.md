@@ -21,7 +21,7 @@ It should print `2 : number` after a few seconds. After that it should be immedi
 
 Create a function `add`:
 
-```
+```elm
 add a b = a + b
 ```
 
@@ -39,7 +39,7 @@ const add = (a, b) => { a + b }
 
 You can call this function like so:
 
-```
+```elm
 add 1 2
 ```
 
@@ -51,13 +51,13 @@ Partial application is very common in Elm so is important to explain early.
 
 If you pass only one argument to this function you will get back a partially applied function:
 
-```
+```elm
 add2 = add 2
 ```
 
 Then you can pass the missing argument to get the final result:
 
-```
+```elm
 add2 3
 ```
 
@@ -73,7 +73,7 @@ Should print `Hello World`. The string concatenation operator in Elm is `++`.
 
 2. Using this function, create a partially applied function where the first word is always "Hello". e.g.
 
-```
+```elm
 sayHello "Sam"
 ```
 
