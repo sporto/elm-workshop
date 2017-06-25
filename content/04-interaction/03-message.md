@@ -1,6 +1,6 @@
 +++
 title       = "Messages"
-weight      = 2
+weight      = 3
 +++
 
 To get this button to do something we need our view to trigger a message when the button is clicked.

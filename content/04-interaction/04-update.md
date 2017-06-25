@@ -1,6 +1,6 @@
 +++
 title       = "Update"
-weight      = 3
+weight      = 4
 +++
 
 Our application is still not doing anything as we are ignoring the message we added. We need to do respond to it. Change `update` to:
