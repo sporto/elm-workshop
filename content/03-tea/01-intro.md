@@ -5,7 +5,7 @@ weight      = 1
 
 In Elm most applications are build using a pattern called **The Elm Architecture**. If you have used Redux this architecture will be very familiar.
 
-<img src="./diagram.png" width="480px" />
+<img src="/images/diagram-tea.png" width="480px" />
 
 This is the Elm architecture:
 
