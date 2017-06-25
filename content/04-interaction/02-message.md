@@ -7,7 +7,7 @@ To get this button to do something we need our view to trigger a message when th
 
 First thing we need is to add a message to our application. Add a new **constructor** to `Msg`. 
 
-```
+```elm
 type Msg
     = NoOp
     | ChangeCount Int
@@ -19,13 +19,13 @@ Note how this **constructor** `ChangeCount Int` can take a payload, in this case
 
 Let's trigger this new message from the view. Add a new import to the application:
 
-```
+```elm
 import Html.Events exposing (onClick)
 ```
 
 Change `btnIncrease` to:
 
-```
+```elm
 btnIncrease =
     button [ onClick (ChangeCount 1) ] [ text "Increase" ]
 ```

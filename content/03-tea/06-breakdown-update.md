@@ -5,7 +5,7 @@ weight      = 6
 
 The next part is the **udpate** function:
 
-```
+```elm
 update : Msg -> Model -> ( Model, Cmd msg )
 update msg model =
     ( model, Cmd.none )
