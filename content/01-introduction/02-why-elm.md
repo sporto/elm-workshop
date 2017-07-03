@@ -5,11 +5,11 @@ weight      = 2
 
 ## Safe and Robust
 
-It is very hard to get runtime errors in Elm. This is possible because of the great type system and the abscence of null. So programs in Elm are more robust.
+It is very hard to get runtime errors in Elm. This is because of the great type system and the abscence of null. So programs in Elm are more robust.
 
 ## Better errors handling
 
-In JavaScript is easy to ignore possible errors. You can do this in Elm. The compiler pushes us to explicitly thing about all possible results of an operation.
+In JavaScript it is easy to ignore possible errors. You can't do this in Elm. The compiler pushes us to explicitly think about and deal with all possible values of any expression.
 
 ## A great type system
 
@@ -17,20 +17,20 @@ All core and third party packages in Elm conform to the Elm type system. This me
 
 ## Confident refactoring experience
 
-Because of the robust type system refactoring a program in Elm is much easier. The compiler will tell us all places that a change affects.
+Because of the robust type system, refactoring a program in Elm is much easier. When you make a change, the compiler will let you know about every place in your code that is affected.
 
 ## Less setup
 
-There is a lot to setup and decide when building an Elm project.
+There is not a lot to set up and decide when starting an Elm project. A single installer provides everything you need, and there are no tools that need to be configured to work together.
 
 ## Easier to test
 
-Pure functions means that they are easier to test as they don't rely on side effects. Building a whole program from pure functions means that overall it is easier to test.
+Because all Elm functions are pure, they are easier to test as they don't rely on side effects. Building a whole program from pure functions makes it much easier to test, and Elm guarantees this for every program you write.
 
 ## Guaranteed immutable data
 
-Elm has only one way to update data. It doesn't let us do the wrong thing, which is easy in JS if we are not careful.
+Elm has only one way to update data. It doesn't let us modify data values that other parts of our code assume will remain unchanged, which is an easy mistake to make in Javascript.
 
 ## Terse functional programming
 
-If you like **lodash**, **ramda** or **sanctuary**, Elm offers a much terser syntax for functional programming, which includes partial application and the pipe operator.
+If you like **lodash**, **ramda** or **sanctuary**, Elm offers an even simpler syntax for functional programming, which includes partial application and the pipeline operator.

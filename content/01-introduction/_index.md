@@ -6,6 +6,6 @@ icon: "<b>1. </b>"
 
 This chapter covers:
 
-- Describe what is Elm
-- Why use Elm
-- Show the basic syntax of functions in Elm
+- What Elm is
+- Why you might use Elm
+- The basic syntax of functions in Elm
