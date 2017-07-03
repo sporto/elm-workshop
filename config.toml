@@ -1,7 +1,7 @@
 baseURL = "http://example.org/"
 languageCode = "en-us"
 title = "Elm Workshop"
-theme = "hugo-theme-docdock"
+theme = "docdock"
 uglyurls = true
 relativeURLs = true
 
