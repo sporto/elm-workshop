@@ -3,7 +3,7 @@ title       = "View"
 weight      = 5
 +++
 
-The next part is the view:
+The next part is the `view` function:
 
 ```elm
 view : Model -> Html Msg
@@ -11,8 +11,8 @@ view model =
     div [] [ text model ]
 ```
 
-This is a function that take a `Model` and return `Html`.
+This is a function that takes a `Model` argument and returns `Html`.
 
-Note `Html Msg`. `Msg` is a type variable. This means that this `Html` emits messages of a concrete type `Msg`. 
+If you’re wondering about the `Html Msg`. The `Msg` here is called a type variable. In this example, it indicates that the `Html` that our `view` returns  will only ever emit the messages specified in our program’s `Msg` type.  Being specific about this enables the Elm compiler to guarantee that our program handles all possible messages.
 
-Type variables are like generics in other languages. e.g. `Html<Msg>` in Rust.
+For the language nerds, types like `Html` that take a type variable are equivalent to the ‘generics’ that you’ll find in many other typed languages, like Java or Rust.

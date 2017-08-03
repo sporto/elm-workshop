@@ -6,12 +6,14 @@ weight      = 7
 Lastly we have:
 
 ```elm
+-- SUBSCRIPTIONS
+
+
 subscriptions model =
     Sub.none
 
 
-
--- Main
+-- MAIN
 
 
 main =
@@ -27,15 +29,20 @@ main =
 
 Subscriptions is how Elm programs listen for external events, for example:
 
-- Mouse move
-- Window resize
-- Time change
-- A message from JavaScript
+- Mouse movement
+- Window resizing
+- Time increments
+- Animation frames
+- Messages from JavaScript code
 
-In this case we declare that we have no subscriptions by using `Sub.none`.
+The `subscriptions` function takes the program’s current model as an argument, and returns a list of the subscriptions we wish to receive messages from. The Elm Runtime calls this function automatically every time our program’s model changes, to give our program an opportunity to change its subscriptions in response.
+
+In this simple example, we have no need tor receive messages from the outside world, so we simply return `Sub.none` regardless of the value of our model.
 
 ## Html.program
 
-Finally, `Html.program` connects everything together. This function takes a record with our `init`, `view`, `update` and `subscriptions` and takes cares of wiring up all the parts. Refer to the previous diagram to understand how this work.
+Finally, our program’s `main` function calls `Html.program` to connect everything together. `Html.program` takes a single argument, a record specifying our `init`, `view`, `update` and `subscriptions` functions, and wires them all together to produce an application that is ready for the Elm Runtime to run.
+
+Here again is the diagram that shows how these parts all work together:
 
 <img src="/images/diagram-tea.png" width="480px" />

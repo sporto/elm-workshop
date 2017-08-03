@@ -11,25 +11,26 @@ module Main exposing (..)
 import Html exposing (Html, div, text)
 
 
--- Application Model
+-- MODEL
 
 
 type alias Model =
     String
 
 
-init : ( Model, Cmd msg )
+init : ( Model, Cmd Msg )
 init =
     ( "Hello", Cmd.none )
 
--- Messages
+
+-- MESSAGES
 
 
 type Msg
     = NoOp
 
 
--- VIEWS
+-- VIEW
 
 
 view : Model -> Html Msg
@@ -37,21 +38,23 @@ view model =
     div [] [ text model ]
 
 
+-- UPDATE
 
--- Update
 
-
-update : Msg -> Model -> ( Model, Cmd msg )
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     ( model, Cmd.none )
 
 
+-- SUBSCRIPTIONS
+
+
+subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.none
 
 
-
--- Main
+-- MAIN
 
 
 main =
@@ -63,4 +66,4 @@ main =
         }
 ```
 
-Copy this into a `Main.elm` file open it using elm-reactor. You should see "Hello". Let's break this down in the next section.
+Copy this into a `Main.elm` file (you can either overwrite the file from the previous chapter, or start a new project folder with `elm-package install -y`), and open it using elm-reactor. You should see "Hello". Admittedly, this is a lot of code to do very little, but it's a really solid foundation to build real-world applications upon. Let's break this down in the next section.
