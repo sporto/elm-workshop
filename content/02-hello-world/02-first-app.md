@@ -21,7 +21,7 @@ Back at the terminal prompt, run:
 elm-reactor
 ```
 
-Then open http://localhost:8000 and click on `Hello.elm`. This should display the text “Hello” on an otherwise blank page. Excellent—we have our first Elm app!
+Then open http://localhost:8000 and click on `Hello.elm`. This should display the text “Hello” on an otherwise blank page. Excellent -- we have our first Elm app!
 
 ---
 
