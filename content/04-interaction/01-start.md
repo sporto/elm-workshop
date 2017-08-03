@@ -12,7 +12,7 @@ module Counter exposing (..)
 import Html exposing (Html, div, button, text)
 
 
--- Application Model
+-- MODEL
 
 
 type alias Model =
@@ -31,16 +31,14 @@ init =
     ( initialModel, Cmd.none )
 
 
-
--- Messages
+-- MESSAGES
 
 
 type Msg
     = NoOp
 
 
-
--- VIEWS
+-- VIEW
 
 
 view : Model -> Html Msg
@@ -56,8 +54,7 @@ btnIncrease =
     button [] [ text "Increase" ]
 
 
-
--- Update
+-- UPDATE
 
 
 update : Msg -> Model -> ( Model, Cmd msg )
@@ -65,12 +62,14 @@ update msg model =
     ( model, Cmd.none )
 
 
+-- SUBSCRIPTIONS
+
+
 subscriptions model =
     Sub.none
 
 
-
--- Main
+-- MAIN
 
 
 main =
@@ -82,9 +81,9 @@ main =
         }
 ```
 
-## Let .. in
+## `let` expressions
 
-Note the use of `let` and `in` in `view`:
+Note the use of `let … in` in `view`:
 
 ```
 view model =
@@ -95,18 +94,17 @@ view model =
         div [] [ text count, btnIncrease ]
 ```
 
-`let` allows you to break a function into smaller reusable parts. You can thing about this as declaring a local variable in a function in JavaScript e.g.
+`let` allows you to break a function into smaller, reusable parts. You can think of this as declaring a local variable in a function in JavaScript e.g.
 
 ```
 function view(model) {
 	const count = ...
-	... then use count...
+
+	... use count ...
 }
 ```
 
 ---
 
-Take some time to understand this app then open this in Elm Reactor, you will see 0 as the current count and a button that doesn't do anything yet.
-
-
+Take some time to understand this app then open this in Elm Reactor, you will see ‘0’ as the current count and an ‘Increase’ button that doesn't do anything yet.
 
