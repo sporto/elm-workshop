@@ -21,5 +21,6 @@ This workshop should take a couple of hours to complete, in this time you will l
 
 We have USB drives available with:
 
-- Installer for the Elm platform for Windows and Mac
+- Installer for the Elm platform for Windows and Mac (unfortunatelly Linux requires installing via NPM)
 - `elm-stuff` folder with the packages pre-installed
+- Elm Format binaries for Mac, Windows and Linux
