@@ -16,17 +16,17 @@ update msg model =
             ( model, Cmd.none )
 ```
 
-Here we have introduced `case`. We pattern match on `msg`. Note how we extract `howMuch` in pattern.
+Here we have introduced a `case` condition. We pattern-match on the `msg` argument. Note how we extract the message payload into `howMuch` in the first pattern.
 
 ## Update syntax
 
-In Elm you update a record with the following syntax:
+In the first branch of our `case` expression, we want to produce an updated model, with the `count` increased by `howMuch`. In Elm, you update a record with the following syntax:
 
 ```elm
 { model | count = model.count + howMuch }
 ```
 
-This returns a new version of `model` where `count` has been updated.
+This returns a new version of `model` where `count` has been updated. Any other fields that might be present in `model` will remain unmodified in the new record.
 
 ---
 

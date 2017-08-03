@@ -7,4 +7,4 @@ weight      = 5
 
 - Prevent the count going below zero when clicking decrease.
 
-- Add another div that displays the counter multiplied by 10.
+- Add another `div` that displays the counter multiplied by 10.
