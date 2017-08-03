@@ -63,5 +63,3 @@ The `div` function takes two arguments:
 2. a list of HTML child nodes
 
     In this example, we have passed a list with a single entry: a text node. To create the text node, we called the `text` function, passing it a string (`"Hello"`).
-
-Elm function arguments are separated by spaces—none of the parentheses or spaces you might be used to in languages like JavaScript.
