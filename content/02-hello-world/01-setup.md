@@ -9,10 +9,10 @@ In an empty directory run:
 elm-package install -y
 ```
 
-This will:
+This does a few things:
 
-- Install core Elm modules for building applications: `html`, `core` and `virtual-dom`
-- Create a file called `elm-package.json`. This file contains a list of dependecies for your project. Take a minute to look at it.
-- Add a folder `elm-stuff`. This folder contains the downloaded packages and compilation artifacts.
+- Installs core Elm modules for building  applications: `html`, `core` and `virtual-dom`
+- Creates a file called `elm-package.json`. This file contains a list of dependecies for your project. Take a minute to look at it.
+- Adds a subfolder named `elm-stuff`. This folder contains the downloaded packages and compilation artifacts.
 
-When checking an Elm project in source control the `elm-stuff` folder should be ignored.
+When tracking an Elm project in source control, you should ignore the `elm-stuff` folder (e.g. by adding it to your project’s `.gitignore` file).
