@@ -3,18 +3,18 @@ title       = "The Elm Architecture"
 weight      = 1
 +++
 
-In Elm most applications are build using a pattern called **The Elm Architecture**. If you have used Redux this architecture will be very familiar.
+Most Elm applications are built using a pattern called **The Elm Architecture** (TEA). If you have used Redux, this architecture will be very familiar. This is not a coincidence -- Redux was heavily inspired by Elm!
 
 <img src="/images/diagram-tea.png" width="480px" />
 
 This is the Elm architecture:
 
-- ➊ When our application first starts we have a model that is passed to a view function.
-- ➋ The view renders the current model.
-- ➌ When the user interacts with the application, we trigger a message that is send to the Elm Runtime (➍) e.g. `ExpandDetails`.
-- ➎ The Elm runtime calls an `update` function passing the triggered message and the current model.
-- ➏ The `update` function takes this message and model and return an updated model and side effects to run (➐).
-- ➑ The Elm runtime calls the view again with the updated model and runs the side effects.
+- ➊ When our application first starts, we have an initial model that is passed to our program’s `view` function.
+- ➋ The `view` function renders the current model to produce our program’s user interface (typically as HTML).
+- ➌ When the user interacts with the rendered view, a message is sent to the Elm Runtime (➍) e.g. `ExpandDetails`.
+- ➎ The Elm Runtime calls our program’s `update` function, passing in the message and the current model.
+- ➏ The `update` function returns an updated model, and optionally a list of side effects to run (➐).
+- ➑ The Elm Runtime calls our `view` function again to render our interface with the updated model. It also performs any side effects requested by our program.
 
 ## Terminology in Elm vs Redux
 

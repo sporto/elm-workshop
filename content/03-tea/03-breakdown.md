@@ -10,34 +10,38 @@ type alias Model =
     String
 ```
 
-Here we define how our application model will look like. In this case we are aliasing the build-in `String` type. So our whole application model is a string.
+Here we define what our application’s model will look like. In this case, we are aliasing the built-in `String` type. So our whole application’s model is simply a string.
 
-Our application model could be anything:
+Our application’s model can be any type of value supported by Elm, including:
 
-- A record
-- A list
-- A number
-- A tuple
-- A union type (more on this later)
+- a record (effectively a JSON object with a fixed set of fields)
+- a list (what we call an array in JavaScript)
+- a number
+- a boolean (true or false)
+- a tuple (a fixed-length list of values of specific types)
+- a union type (more on this later)
 
 
 ## Initial model
 
 ```elm
-init : ( Model, Cmd msg )
+init : ( Model, Cmd Msg )
 init =
     ( "Hello", Cmd.none )
 ```
 
-`init` is a function that returns the initial state of the application. The first line `init : ( Model, Cmd msg )` is the function signature. This is saying that `init` return a tuple of `Model` and `Cmd`.
+`init` is a function that returns the initial state of the application. The first line `init : ( Model, Cmd msg )` is the function’s type signature. This is saying that `init` returns a tuple, containing  a `Model` and  a  `Cmd Msg`.
 
-### Commands (Cmd)
+### Commands (`Cmd`)
 
-Commands is how we tell the Elm runtime to perform side effects. Side effects may include:
+A command is how we tell the Elm runtime to perform a side effect. Here are some of the side effects supported by the Elm Runtime:
 
-- An http request
+- Send an HTTP request (Ajax)
 - Get the current time
 - Generate a random number
 - Access local storage
+- A batch of commands to be performed in parallel
 
-In this case we tell Elm that we don't need any side effect initially i.e. `Cmd.none`.
+Each of these is represented by a value with a type of `Cmd`.
+
+Our program's `init` function has an opportunity to return a command to be performed when our program first starts. In this example, we don't need Elm to do anything at start-up, so we return `Cmd.none`.

@@ -6,5 +6,5 @@ icon: "<b>1. </b>"
 
 This chapter covers:
 
-- What is the Elm Architecture
-- How to write a basic app using it
+- What the Elm Architecture is
+- How to write a basic app using this architecture
