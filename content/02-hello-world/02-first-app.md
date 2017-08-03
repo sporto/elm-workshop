@@ -60,6 +60,7 @@ The `div` function takes two arguments:
 1. a list of attributes (e.g. `class`, `id`, etc.)
 
     In this example, we have passed in an empty list (`[]`), so the `div` will have no attributes.
+
 2. a list of HTML child nodes
 
     In this example, we have passed a list with a single entry: a text node. To create the text node, we called the `text` function, passing it a string (`"Hello"`).
