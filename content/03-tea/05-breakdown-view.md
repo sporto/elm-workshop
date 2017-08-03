@@ -13,6 +13,6 @@ view model =
 
 This is a function that takes a `Model` argument and returns `Html`.
 
-If you’re wondering about the `Html Msg`. The `Msg` here is called a type variable. In this example, it indicates that the `Html` that our `view` returns  will only ever emit the messages specified in our program’s `Msg` type.  Being specific about this enables the Elm compiler to guarantee that our program handles all possible messages.
+If you’re curious, here’s a little explanation about `Html Msg`. Elm’s `Html` type takes an argument that indicates the type of messages the user interface will generate. In this example, we pass it `Msg` to indicate that the `Html` that our `view` returns  will only ever emit the messages specified by our program’s `Msg` type. Being specific about this enables the Elm compiler to guarantee that our program handles every message it can produce.
 
-For the language nerds, types like `Html` that take a type variable are equivalent to the ‘generics’ that you’ll find in many other typed languages, like Java or Rust.
+If you’re familiar with a language like TypeScript, Java or Rust that supports generic types, and you're wondering if `Html` might be a generic, you’re absolutely right. If you’ve never heard of generic types, don’t sweat it.
