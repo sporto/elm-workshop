@@ -6,7 +6,7 @@ weight      = 6
 The next part is the `udpate` function, which is equivalent to a **reducer** in Redux:
 
 ```elm
-update : Msg -> Model -> ( Model, Cmd msg )
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     ( model, Cmd.none )
 ```
