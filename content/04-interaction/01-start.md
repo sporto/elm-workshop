@@ -26,7 +26,7 @@ initialModel =
     }
 
 
-init : ( Model, Cmd msg )
+init : ( Model, Cmd Msg )
 init =
     ( initialModel, Cmd.none )
 
@@ -57,7 +57,7 @@ btnIncrease =
 -- UPDATE
 
 
-update : Msg -> Model -> ( Model, Cmd msg )
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     ( model, Cmd.none )
 
@@ -107,4 +107,3 @@ function view(model) {
 ---
 
 Take some time to understand this app then open this in Elm Reactor, you will see ‘0’ as the current count and an ‘Increase’ button that doesn't do anything yet.
-
