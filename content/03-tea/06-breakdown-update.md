@@ -3,7 +3,7 @@ title       = "Update"
 weight      = 6
 +++
 
-The next part is the `udpate` function, which is equivalent to a **reducer** in Redux:
+The next part is the `update` function, which is equivalent to a **reducer** in Redux:
 
 ```elm
 update : Msg -> Model -> ( Model, Cmd Msg )
