@@ -15,7 +15,13 @@ Instead, let's use a **record**. Much like a JSON object, Elm records store valu
     }
     ```
 
-2. Create a function called `initialModel` that returns a record like the one above, to be used as the program’s initial state. Add a function signature to `initialModel`.
+2. Create a function called `initialModel` that returns a record that conforms to the type above, to be used as the program’s initial state. Add a function signature to `initialModel`.
+
+A concrete record of this type could look like:
+```
+{ message = "Hello"
+}
+```
 
 3. In `init`, call `initialModel` to obtain the initial model, rather than using a hard-coded value.
 

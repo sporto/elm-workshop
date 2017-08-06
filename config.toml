@@ -4,6 +4,7 @@ title = "Elm Workshop"
 theme = "docdock"
 uglyurls = true
 relativeURLs = true
+ignoreFiles = [ "elm-stuff$" ]
 
 [params]
   editURL = "https://github.com/sporto/elm-workshop"
