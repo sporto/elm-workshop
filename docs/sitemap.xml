@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://example.org/01-introduction.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/02-hello-world/01-setup.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/04-interaction/01-start.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/03-tea/01-intro.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/01-introduction/01-what-is-elm.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/04-interaction/02-flow.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/02-hello-world.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/03-tea/02-structure.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/01-introduction/02-why-elm.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/02-hello-world/02-first-app.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/02-hello-world/03-exercise.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/01-introduction/03-functions.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/04-interaction/03-message.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/03-tea/03-breakdown.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/03-tea.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/04-interaction.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/03-tea/04-breakdown-messages.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/04-interaction/04-update.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/05-conclusion.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/04-interaction/05-exercise.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/03-tea/05-breakdown-view.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/03-tea/06-breakdown-update.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/03-tea/07-breakdown-main.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/03-tea/08-exercise.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/_header.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/categories.html</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/tags.html</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

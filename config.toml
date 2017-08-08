@@ -1,3 +1,4 @@
+publishDir = "docs"
 baseURL = "http://example.org/"
 languageCode = "en-us"
 title = "Elm Workshop"

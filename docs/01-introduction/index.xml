@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Introduction on Elm Workshop</title>
+    <link>http://example.org/01-introduction.html</link>
+    <description>Recent content in Introduction on Elm Workshop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://example.org/01-introduction/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>What is Elm</title>
+      <link>http://example.org/01-introduction/01-what-is-elm.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/01-introduction/01-what-is-elm.html</guid>
+      <description>Elm is a pure functional programming language that compiles to JavaScript.
+ Elm is statically typed. But it has type inference, so it is not necessary to manually write the types.
+ All functions are pure. Meaning that given the same arguments they always return the same result.
+ All data is immutable. Functions always return a new version of the data instead of mutating the data given.
+ There is no null in Elm.</description>
+    </item>
+    
+    <item>
+      <title>Why Elm</title>
+      <link>http://example.org/01-introduction/02-why-elm.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/01-introduction/02-why-elm.html</guid>
+      <description>Safe and Robust It is very hard to get runtime errors in Elm. This is because of the great type system and the abscence of null. So programs in Elm are more robust.
+Better errors handling In JavaScript it is easy to ignore possible errors. You can&amp;rsquo;t do this in Elm. The compiler pushes us to explicitly think about and deal with all possible values of any expression.
+A great type system All core and third party packages in Elm conform to the Elm type system.</description>
+    </item>
+    
+    <item>
+      <title>Functions</title>
+      <link>http://example.org/01-introduction/03-functions.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/01-introduction/03-functions.html</guid>
+      <description>In Elm functions are a bit different than in languages like JavaScript, so it is worth familiarising yourself with how they are written and called in Elm.
+Let&amp;rsquo;s create a function in the Elm repl (read-evaluate-print loop). In your terminal, start a repl session:
+elm-repl  The first time you use the repl Elm needs to download the core modules, so it can take a little while. Try:
+1 + 1  It should print 2 : number after a few seconds.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -20,3 +20,5 @@ hugo serve
 ```
 hugo
 ```
+
+Workshop will be build in the `docs` directory.

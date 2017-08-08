@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hello World on Elm Workshop</title>
+    <link>http://example.org/02-hello-world.html</link>
+    <description>Recent content in Hello World on Elm Workshop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://example.org/02-hello-world/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setup</title>
+      <link>http://example.org/02-hello-world/01-setup.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/02-hello-world/01-setup.html</guid>
+      <description>In an empty directory run:
+elm-package install -y  This does a few things:
+ Installs core Elm modules for building applications: html, core and virtual-dom Creates a file called elm-package.json. This file contains a list of dependecies for your project. Take a minute to look at it. Adds a subfolder named elm-stuff. This folder contains the downloaded packages and compilation artifacts.  When tracking an Elm project in source control, you should ignore the elm-stuff folder (e.</description>
+    </item>
+    
+    <item>
+      <title>Your first app</title>
+      <link>http://example.org/02-hello-world/02-first-app.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/02-hello-world/02-first-app.html</guid>
+      <description>In your project folder, create a new file named Hello.elm:
+module Hello exposing (..) import Html exposing (div, text) main = div [] [ text &amp;quot;Hello&amp;quot; ]  Back at the terminal prompt, run:
+elm-reactor  Then open http://localhost:8000 and click on Hello.elm. This should display the text “Hello” on an otherwise blank page. Excellent &amp;ndash; we have our first Elm app!
+Let&amp;rsquo;s break it down:
+module Hello exposing (..)  This file defines an Elm module, and this line states the module’s name.</description>
+    </item>
+    
+    <item>
+      <title>Exercise</title>
+      <link>http://example.org/02-hello-world/03-exercise.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/02-hello-world/03-exercise.html</guid>
+      <description>In the following program, implement the commented parts:
+module Hello exposing (..) import Html exposing (div, text) main = div [] [ text &amp;quot;Hello&amp;quot; -- Add another text node with the word &amp;quot;World&amp;quot; ]  Note: In Elm, -- signals the start of a comment, running to the end of the line (just like // in JavaScript).
+Hint: Although Elm doesn’t use commas between function arguments, it does use commas between the items in a list.</description>
+    </item>
+    
+  </channel>
+</rss>

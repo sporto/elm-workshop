@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="generator" content="Hugo 0.25.1" />
+    <meta name="description" content="Elm Workshop">
+<meta name="author" content="Sebastian Porto">
+
+    <title>Exercise :: Elm Workshop</title>
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon" />
+    <link href="../css/nucleus.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/hybrid.css" rel="stylesheet">
+    <link href="../css/featherlight.min.css" rel="stylesheet">
+    <link href="../css/horsey.css" rel="stylesheet">
+    
+    <link href="../css/theme.css" rel="stylesheet">
+    
+    
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-2.x.min.js"></script>
+    <style type="text/css">
+      :root #header + #content > #left > #rlblock_left {
+        display:none !important;
+      }
+    </style>
+
+    
+
+    <link rel="stylesheet" type="text/css" href="./agate.css" />
+<style type="text/css">
+	#top-bar {
+		display: none;
+	}
+
+	#TableOfContents {
+		display: none;
+	}
+
+	#sidebar ul.topics ul {
+		display: initial;
+	}
+</style>
+  </head>
+  <body class="" data-url="/02-hello-world/03-exercise.html">
+    <nav id="sidebar" class="">
+
+
+
+
+
+<div class="highlightable">
+  <div id="header-wrapper">
+    <div id="header">
+       
+	<p>Elm Workshop</p>
+ 
+
+
+    </div>
+    
+  </div>
+
+  
+    <ul class="topics">
+        
+        
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/01-introduction.html" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../01-introduction.html">
+        <span>Introduction</span>
+
+        
+        
+
+          
+            <i class="fa fa-angle-right fa-lg category-icon"></i>
+          
+
+        
+
+        
+      </a>
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/01-introduction/01-what-is-elm.html" class="dd-item
+     
+      ">
+        <a href="../01-introduction/01-what-is-elm.html">
+        <span>What is Elm</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/01-introduction/02-why-elm.html" class="dd-item
+     
+      ">
+        <a href="../01-introduction/02-why-elm.html">
+        <span>Why Elm</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/01-introduction/03-functions.html" class="dd-item
+     
+      ">
+        <a href="../01-introduction/03-functions.html">
+        <span>Functions</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/02-hello-world.html" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="../02-hello-world.html">
+        <span>Hello World</span>
+
+        
+        
+
+          
+            <i class="fa fa-angle-down fa-lg category-icon"></i>
+          
+
+        
+
+        
+      </a>
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/02-hello-world/01-setup.html" class="dd-item
+     
+      ">
+        <a href="../02-hello-world/01-setup.html">
+        <span>Setup</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/02-hello-world/02-first-app.html" class="dd-item
+     
+      ">
+        <a href="../02-hello-world/02-first-app.html">
+        <span>Your first app</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/02-hello-world/03-exercise.html" class="dd-item
+     active
+      ">
+        <a href="../02-hello-world/03-exercise.html">
+        <span>Exercise</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/03-tea.html" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../03-tea.html">
+        <span>The Elm Architecture</span>
+
+        
+        
+
+          
+            <i class="fa fa-angle-right fa-lg category-icon"></i>
+          
+
+        
+
+        
+      </a>
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/03-tea/01-intro.html" class="dd-item
+     
+      ">
+        <a href="../03-tea/01-intro.html">
+        <span>The Elm Architecture</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/03-tea/02-structure.html" class="dd-item
+     
+      ">
+        <a href="../03-tea/02-structure.html">
+        <span>Structure</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/03-tea/03-breakdown.html" class="dd-item
+     
+      ">
+        <a href="../03-tea/03-breakdown.html">
+        <span>TEA Breakdown</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/03-tea/04-breakdown-messages.html" class="dd-item
+     
+      ">
+        <a href="../03-tea/04-breakdown-messages.html">
+        <span>Messages</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/03-tea/05-breakdown-view.html" class="dd-item
+     
+      ">
+        <a href="../03-tea/05-breakdown-view.html">
+        <span>View</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/03-tea/06-breakdown-update.html" class="dd-item
+     
+      ">
+        <a href="../03-tea/06-breakdown-update.html">
+        <span>Update</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/03-tea/07-breakdown-main.html" class="dd-item
+     
+      ">
+        <a href="../03-tea/07-breakdown-main.html">
+        <span>Program</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/03-tea/08-exercise.html" class="dd-item
+     
+      ">
+        <a href="../03-tea/08-exercise.html">
+        <span>Exercise</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/04-interaction.html" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../04-interaction.html">
+        <span>Interaction</span>
+
+        
+        
+
+          
+            <i class="fa fa-angle-right fa-lg category-icon"></i>
+          
+
+        
+
+        
+      </a>
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/04-interaction/01-start.html" class="dd-item
+     
+      ">
+        <a href="../04-interaction/01-start.html">
+        <span>Start</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/04-interaction/02-flow.html" class="dd-item
+     
+      ">
+        <a href="../04-interaction/02-flow.html">
+        <span>Flow</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/04-interaction/03-message.html" class="dd-item
+     
+      ">
+        <a href="../04-interaction/03-message.html">
+        <span>Messages</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/04-interaction/04-update.html" class="dd-item
+     
+      ">
+        <a href="../04-interaction/04-update.html">
+        <span>Update</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/04-interaction/05-exercise.html" class="dd-item
+     
+      ">
+        <a href="../04-interaction/05-exercise.html">
+        <span>Exercise</span> 
+        
+        </a></li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/05-conclusion.html" class="dd-item 
+        
+        
+        
+        ">
+      <a href="../05-conclusion.html">
+        <span>Conclusion</span>
+
+        
+        
+
+        
+      </a>
+              
+    </li>
+  
+ 
+
+          
+        
+
+        
+        <section id="shortcuts">
+            
+                <li class="" role="">
+                    <h3>More</h3>
+                    <a href="https://github.com/sporto/elm-workshop"><i class='fa fa-github'></i> Github repo</a>
+                    
+                </li>
+            
+        </section>    
+        
+        
+
+        
+    </ul>
+    
+     
+    <section id="footer">
+      
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+        
+          <div id="top-bar">
+            
+              
+              
+              
+            <div id="top-github-link">
+              <a class="github-link" href="https://github.com/sporto/elm-workshop02-hello-world/03-exercise.md" target="blank">
+                <i class="fa fa-code-fork"></i>
+                Edit page
+              </a>
+            </div>
+              
+            
+
+            <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                <span id="sidebar-toggle-span">
+                  <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                    <i class="fa fa-bars"></i>
+                  </a>
+                </span>
+                <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+                <span class="links">
+                
+
+
+
+
+
+
+
+ <a href='../'></a> > <a href='../02-hello-world.html'>Hello World</a> > Exercise
+
+ 
+
+ 
+
+   
+                </span>
+            </div>
+            <div class="progress">
+    <div class="wrapper">
+
+    </div>
+</div>
+
+          </div>
+        
+        
+        <div id="body-inner">
+          
+            <h1>Exercise</h1>
+          
+
+
+
+
+<p>In the following program, implement the commented parts:</p>
+
+<pre><code>module Hello exposing (..)
+
+import Html exposing (div, text)
+
+
+main =
+    div []
+        [ text &quot;Hello&quot;
+
+        -- Add another text node with the word &quot;World&quot;
+        ]
+</code></pre>
+
+<p><strong>Note:</strong> In Elm, <code>--</code> signals the start of a comment, running to the end of the line (just like <code>//</code> in JavaScript).</p>
+
+<p><strong>Hint:</strong> Although Elm doesn’t use commas between function arguments, it <em>does</em> use commas between the items in a list.</p>
+
+
+<footer class=" footline" >
+	
+</footer>
+
+
+
+      </div>
+    </div>
+
+    
+ 
+    
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+        
+            <a class="nav nav-prev" href="../02-hello-world/02-first-app.html" title="Your first app"> <i class="fa fa-chevron-left"></i></a>
+        
+        
+            <a class="nav nav-next" href="../03-tea.html" title="The Elm Architecture" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+        
+    </div>
+
+    </section>
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../js/clipboard.min.js"></script>
+    <script src="../js/featherlight.min.js"></script>
+    <script src="../js/html5shiv-printshiv.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../js/modernizr.custom.71422.js"></script>
+    <script src="../js/learn.js"></script>
+    <script src="../js/hugo-learn.js"></script>
+
+    
+    <link href="../mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+    <script src="../mermaid/mermaid.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    
+
+    
+  </body>
+</html>
+

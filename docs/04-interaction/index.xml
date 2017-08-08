@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Interaction on Elm Workshop</title>
+    <link>http://example.org/04-interaction.html</link>
+    <description>Recent content in Interaction on Elm Workshop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://example.org/04-interaction/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Start</title>
+      <link>http://example.org/04-interaction/01-start.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/04-interaction/01-start.html</guid>
+      <description>For this chapter we will create a simple counter application. Copy this into Counter.elm:
+module Counter exposing (..) import Html exposing (Html, div, button, text) -- MODEL type alias Model = { count : Int } initialModel : Model initialModel = { count = 0 } init : ( Model, Cmd Msg ) init = ( initialModel, Cmd.none ) -- MESSAGES type Msg = NoOp -- VIEW view : Model -&amp;gt; Html Msg view model = let count = toString model.</description>
+    </item>
+    
+    <item>
+      <title>Flow</title>
+      <link>http://example.org/04-interaction/02-flow.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/04-interaction/02-flow.html</guid>
+      <description>Here’s what we want to happen when a user clicks that ‘Increase’ button:
+sequenceDiagram participant View participant Runtime participant Update View-Runtime: ChangeCount Runtime-Update: ChangeCount and Current Model Update--Runtime: (Updated model, Commands) Runtime-View: Updated model   The View generates a message, ChangeCount The Elm runtime calls our Update function with the message and the current model Update returns an updated model and commands to run The Elm runtime renders the View again with the updated model  </description>
+    </item>
+    
+    <item>
+      <title>Messages</title>
+      <link>http://example.org/04-interaction/03-message.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/04-interaction/03-message.html</guid>
+      <description>To get this button to do something we need our view to trigger a message when the button is clicked.
+First thing we need is to add a message to our application. Add a new constructor to Msg:
+type Msg = NoOp | ChangeCount Int  Note how this constructor ChangeCount Int takes a payload, in this case an integer.
+Note: Since we aren’t actually using our NoOp message constructor anywhere, you could actually remove it, but I’ve left it in here to make it clear how to support more than one kind of message in your program.</description>
+    </item>
+    
+    <item>
+      <title>Update</title>
+      <link>http://example.org/04-interaction/04-update.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/04-interaction/04-update.html</guid>
+      <description>Our application is still not doing anything as we are ignoring the message we added. We need to do respond to it. Change update to:
+update : Msg -&amp;gt; Model -&amp;gt; ( Model, Cmd Msg ) update msg model = case msg of ChangeCount howMuch -&amp;gt; ( { model | count = model.count + howMuch }, Cmd.none ) NoOp -&amp;gt; ( model, Cmd.none )  Here we have introduced a case condition.</description>
+    </item>
+    
+    <item>
+      <title>Exercise</title>
+      <link>http://example.org/04-interaction/05-exercise.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/04-interaction/05-exercise.html</guid>
+      <description> Add a decrease button.
+ Prevent the count going below zero when clicking decrease.
+ Add another div that displays the counter multiplied by 10.
+  </description>
+    </item>
+    
+  </channel>
+</rss>

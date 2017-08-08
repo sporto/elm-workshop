@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Elm Workshop</title>
+    <link>http://example.org/</link>
+    <description>Recent content on Elm Workshop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setup</title>
+      <link>http://example.org/02-hello-world/01-setup.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/02-hello-world/01-setup.html</guid>
+      <description>In an empty directory run:
+elm-package install -y  This does a few things:
+ Installs core Elm modules for building applications: html, core and virtual-dom Creates a file called elm-package.json. This file contains a list of dependecies for your project. Take a minute to look at it. Adds a subfolder named elm-stuff. This folder contains the downloaded packages and compilation artifacts.  When tracking an Elm project in source control, you should ignore the elm-stuff folder (e.</description>
+    </item>
+    
+    <item>
+      <title>Start</title>
+      <link>http://example.org/04-interaction/01-start.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/04-interaction/01-start.html</guid>
+      <description>For this chapter we will create a simple counter application. Copy this into Counter.elm:
+module Counter exposing (..) import Html exposing (Html, div, button, text) -- MODEL type alias Model = { count : Int } initialModel : Model initialModel = { count = 0 } init : ( Model, Cmd Msg ) init = ( initialModel, Cmd.none ) -- MESSAGES type Msg = NoOp -- VIEW view : Model -&amp;gt; Html Msg view model = let count = toString model.</description>
+    </item>
+    
+    <item>
+      <title>The Elm Architecture</title>
+      <link>http://example.org/03-tea/01-intro.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/03-tea/01-intro.html</guid>
+      <description>Most Elm applications are built using a pattern called The Elm Architecture (TEA). If you have used Redux, this architecture will be very familiar. This is not a coincidence &amp;ndash; Redux was heavily inspired by Elm!
+This is the Elm architecture:
+ ➊ When our application first starts, we have an initial model that is passed to our program’s view function. ➋ The view function renders the current model to produce our program’s user interface (typically as HTML).</description>
+    </item>
+    
+    <item>
+      <title>What is Elm</title>
+      <link>http://example.org/01-introduction/01-what-is-elm.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/01-introduction/01-what-is-elm.html</guid>
+      <description>Elm is a pure functional programming language that compiles to JavaScript.
+ Elm is statically typed. But it has type inference, so it is not necessary to manually write the types.
+ All functions are pure. Meaning that given the same arguments they always return the same result.
+ All data is immutable. Functions always return a new version of the data instead of mutating the data given.
+ There is no null in Elm.</description>
+    </item>
+    
+    <item>
+      <title>Flow</title>
+      <link>http://example.org/04-interaction/02-flow.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/04-interaction/02-flow.html</guid>
+      <description>Here’s what we want to happen when a user clicks that ‘Increase’ button:
+sequenceDiagram participant View participant Runtime participant Update View-Runtime: ChangeCount Runtime-Update: ChangeCount and Current Model Update--Runtime: (Updated model, Commands) Runtime-View: Updated model   The View generates a message, ChangeCount The Elm runtime calls our Update function with the message and the current model Update returns an updated model and commands to run The Elm runtime renders the View again with the updated model  </description>
+    </item>
+    
+    <item>
+      <title>Structure</title>
+      <link>http://example.org/03-tea/02-structure.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/03-tea/02-structure.html</guid>
+      <description>Here is a basic application using the Elm architecture.
+module Main exposing (..) import Html exposing (Html, div, text) -- MODEL type alias Model = String init : ( Model, Cmd Msg ) init = ( &amp;quot;Hello&amp;quot;, Cmd.none ) -- MESSAGES type Msg = NoOp -- VIEW view : Model -&amp;gt; Html Msg view model = div [] [ text model ] -- UPDATE update : Msg -&amp;gt; Model -&amp;gt; ( Model, Cmd Msg ) update msg model = ( model, Cmd.</description>
+    </item>
+    
+    <item>
+      <title>Why Elm</title>
+      <link>http://example.org/01-introduction/02-why-elm.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/01-introduction/02-why-elm.html</guid>
+      <description>Safe and Robust It is very hard to get runtime errors in Elm. This is because of the great type system and the abscence of null. So programs in Elm are more robust.
+Better errors handling In JavaScript it is easy to ignore possible errors. You can&amp;rsquo;t do this in Elm. The compiler pushes us to explicitly think about and deal with all possible values of any expression.
+A great type system All core and third party packages in Elm conform to the Elm type system.</description>
+    </item>
+    
+    <item>
+      <title>Your first app</title>
+      <link>http://example.org/02-hello-world/02-first-app.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/02-hello-world/02-first-app.html</guid>
+      <description>In your project folder, create a new file named Hello.elm:
+module Hello exposing (..) import Html exposing (div, text) main = div [] [ text &amp;quot;Hello&amp;quot; ]  Back at the terminal prompt, run:
+elm-reactor  Then open http://localhost:8000 and click on Hello.elm. This should display the text “Hello” on an otherwise blank page. Excellent &amp;ndash; we have our first Elm app!
+Let&amp;rsquo;s break it down:
+module Hello exposing (..)  This file defines an Elm module, and this line states the module’s name.</description>
+    </item>
+    
+    <item>
+      <title>Exercise</title>
+      <link>http://example.org/02-hello-world/03-exercise.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/02-hello-world/03-exercise.html</guid>
+      <description>In the following program, implement the commented parts:
+module Hello exposing (..) import Html exposing (div, text) main = div [] [ text &amp;quot;Hello&amp;quot; -- Add another text node with the word &amp;quot;World&amp;quot; ]  Note: In Elm, -- signals the start of a comment, running to the end of the line (just like // in JavaScript).
+Hint: Although Elm doesn’t use commas between function arguments, it does use commas between the items in a list.</description>
+    </item>
+    
+    <item>
+      <title>Functions</title>
+      <link>http://example.org/01-introduction/03-functions.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/01-introduction/03-functions.html</guid>
+      <description>In Elm functions are a bit different than in languages like JavaScript, so it is worth familiarising yourself with how they are written and called in Elm.
+Let&amp;rsquo;s create a function in the Elm repl (read-evaluate-print loop). In your terminal, start a repl session:
+elm-repl  The first time you use the repl Elm needs to download the core modules, so it can take a little while. Try:
+1 + 1  It should print 2 : number after a few seconds.</description>
+    </item>
+    
+    <item>
+      <title>Messages</title>
+      <link>http://example.org/04-interaction/03-message.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/04-interaction/03-message.html</guid>
+      <description>To get this button to do something we need our view to trigger a message when the button is clicked.
+First thing we need is to add a message to our application. Add a new constructor to Msg:
+type Msg = NoOp | ChangeCount Int  Note how this constructor ChangeCount Int takes a payload, in this case an integer.
+Note: Since we aren’t actually using our NoOp message constructor anywhere, you could actually remove it, but I’ve left it in here to make it clear how to support more than one kind of message in your program.</description>
+    </item>
+    
+    <item>
+      <title>TEA Breakdown</title>
+      <link>http://example.org/03-tea/03-breakdown.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/03-tea/03-breakdown.html</guid>
+      <description>Application Model type alias Model = String  Here we define what our application’s model will look like. In this case, we are aliasing the built-in String type. So our whole application’s model is simply a string.
+Our application’s model can be any type of value supported by Elm, including:
+ a record (effectively a JSON object with a fixed set of fields) a list (what we call an array in JavaScript) a number a boolean (true or false) a tuple (a fixed-length list of values of specific types) a union type (more on this later)  Initial model init : ( Model, Cmd Msg ) init = ( &amp;quot;Hello&amp;quot;, Cmd.</description>
+    </item>
+    
+    <item>
+      <title>Messages</title>
+      <link>http://example.org/03-tea/04-breakdown-messages.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/03-tea/04-breakdown-messages.html</guid>
+      <description>The next part are the messages in our application:
+type Msg = NoOp  We have only listed one message that our program can receive, which we’ve named NoOp (meaning “no operation”). Our program doesn’t yet have any features that would require responding to a message, so we’re just providing a dummy message here as a placeholder.
+A type declaration defines a union type in Elm (also known as an algebraic data type , or ADT).</description>
+    </item>
+    
+    <item>
+      <title>Update</title>
+      <link>http://example.org/04-interaction/04-update.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/04-interaction/04-update.html</guid>
+      <description>Our application is still not doing anything as we are ignoring the message we added. We need to do respond to it. Change update to:
+update : Msg -&amp;gt; Model -&amp;gt; ( Model, Cmd Msg ) update msg model = case msg of ChangeCount howMuch -&amp;gt; ( { model | count = model.count + howMuch }, Cmd.none ) NoOp -&amp;gt; ( model, Cmd.none )  Here we have introduced a case condition.</description>
+    </item>
+    
+    <item>
+      <title>Exercise</title>
+      <link>http://example.org/04-interaction/05-exercise.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/04-interaction/05-exercise.html</guid>
+      <description> Add a decrease button.
+ Prevent the count going below zero when clicking decrease.
+ Add another div that displays the counter multiplied by 10.
+  </description>
+    </item>
+    
+    <item>
+      <title>View</title>
+      <link>http://example.org/03-tea/05-breakdown-view.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/03-tea/05-breakdown-view.html</guid>
+      <description>The next part is the view function:
+view : Model -&amp;gt; Html Msg view model = div [] [ text model ]  This is a function that takes a Model argument and returns Html.
+If you’re curious, here’s a little explanation about Html Msg. Elm’s Html type takes an argument that indicates the type of messages the user interface will generate. In this example, we pass it Msg to indicate that the Html that our view returns will only ever emit the messages specified by our program’s Msg type.</description>
+    </item>
+    
+    <item>
+      <title>Update</title>
+      <link>http://example.org/03-tea/06-breakdown-update.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/03-tea/06-breakdown-update.html</guid>
+      <description>The next part is the update function, which is equivalent to a reducer in Redux:
+update : Msg -&amp;gt; Model -&amp;gt; ( Model, Cmd Msg ) update msg model = ( model, Cmd.none )  This function is responsible for updating your program’s model in response to the messages it receives; the Elm Runtime calls it automatically when it receives a message. This function takes two arguments: the incoming message (which will be a value of the Msg type we defined above), and the current model.</description>
+    </item>
+    
+    <item>
+      <title>Program</title>
+      <link>http://example.org/03-tea/07-breakdown-main.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/03-tea/07-breakdown-main.html</guid>
+      <description>Lastly we have:
+-- SUBSCRIPTIONS subscriptions model = Sub.none -- MAIN main = Html.program { init = init , view = view , update = update , subscriptions = subscriptions }  Subscriptions Subscriptions is how Elm programs listen for external events, for example:
+ Mouse movement Window resizing Time increments Animation frames Messages from JavaScript code  The subscriptions function takes the program’s current model as an argument, and returns a list of the subscriptions we wish to receive messages from.</description>
+    </item>
+    
+    <item>
+      <title>Exercise</title>
+      <link>http://example.org/03-tea/08-exercise.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/03-tea/08-exercise.html</guid>
+      <description>The program we just wrote is structured according to TEA (The Elm Architecture), which should make it easy to extend. To begin, we might alter the representation of our model so that it can store more than just a single string.
+Instead, let&amp;rsquo;s use a record. Much like a JSON object, Elm records store values for a number of keys. Let’s move our model’s string into a record key, so that we can later add more keys with other values as needed.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/_header.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/_header.html</guid>
+      <description>Elm Workshop</description>
+    </item>
+    
+  </channel>
+</rss>
