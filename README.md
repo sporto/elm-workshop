@@ -1,6 +1,8 @@
 # Elm Workshop
 
-An introductory workshop to learn Elm
+An introductory workshop to learn Elm.
+
+https://sporto.github.io/elm-workshop/
 
 ## What you will learn
 
