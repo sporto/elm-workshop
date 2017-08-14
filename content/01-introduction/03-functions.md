@@ -52,7 +52,7 @@ Partial application is very common in Elm so is important to explain early.
 If you pass only one argument to this function you will get back a partially applied function:
 
 ```elm
-increment = add 2
+add2 = add 2
 ```
 
 Then you can pass the missing argument to get the final result:
