@@ -1,28 +1,32 @@
 # Elm Workshop
 
-An introductory workshop to learn Elm.
+An introductory workshop to learn Elm. <https://sporto.github.io/elm-workshop/>
 
-https://sporto.github.io/elm-workshop/
+## Contributing
 
-## What you will learn
+All content for the worshop is in `/content`
 
-This workshop should take a couple of hours to complete, in this time you will learn:
+## Building
 
-- What is Elm
-- Why use Elm
-- Basic syntax of Elm
-- How to build a basic Elm application
+Install [Hugo](https://gohugo.io)
+Min 0.25 required.
 
-## Requirements
+Install the theme:
 
-- You need to install the Elm Platform from [here](https://guide.elm-lang.org/install.html).
-- Install Elm syntax highlighting for your editor.
-- And Elm Format is highly recommended https://github.com/avh4/elm-format/releases.
+```
+git clone git@github.com:vjeantet/hugo-theme-docdock.git themes/docdock
+```
 
-## Offline resources
+### Preview
 
-We have USB drives available with:
+```
+hugo serve
+```
 
-- Installer for the Elm platform for Windows and Mac (Linux requires installing via NPM)
-- `elm-stuff` folder with the packages pre-installed
-- Elm Format binaries for Mac, Windows and Linux
+### Build
+
+```
+hugo
+```
+
+Workshop will be build in the `docs` directory.
