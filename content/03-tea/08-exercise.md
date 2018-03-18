@@ -7,7 +7,7 @@ The program we just wrote is structured according to TEA (The Elm Architecture),
 
 Instead, let's use a **record**. Much like a JSON object, Elm records store values for a number of keys. Let’s move our model’s string into a record key, so that we can later add more keys with other values as needed.
 
-1. Change the `Model` to a record, like this:
+1.  Change the `Model` to a record, like this:
 
     ```elm
     type alias Model = {
@@ -15,14 +15,14 @@ Instead, let's use a **record**. Much like a JSON object, Elm records store valu
     }
     ```
 
-2. Create a function called `initialModel` that returns a record that conforms to the type above, to be used as the program’s initial state. Add a function signature to `initialModel`.
+2.  Create a function called `initialModel` that returns a record that conforms to the type above, to be used as the program’s initial state. Add a function signature to `initialModel`.
 
-A concrete record of this type could look like:
-```
-{ message = "Hello"
-}
-```
+    A concrete record of this type could look like this:
 
-3. In `init`, call `initialModel` to obtain the initial model, rather than using a hard-coded value.
+    ```elm
+    { message = "Hello" }
+    ```
 
-4. Change the view so it uses `model.message` to get the text to be displayed in the user interface.
+3.  In `init`, call `initialModel` to obtain the initial model, rather than using a hard-coded value.
+
+4.  Change the view so it uses `model.message` to get the text to be displayed in the user interface.
