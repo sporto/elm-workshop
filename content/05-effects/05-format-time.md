@@ -45,7 +45,7 @@ in `Just _` with a variable name:
             text (toString model.time)
 ```
 
-With the unadorned `Time` value in `time`,
+With the unwrapped `Time` value in `time`,
 we can now display _that_ instead of `model.time`:
 
 ```elm
@@ -58,9 +58,9 @@ that represents the current time.
 The [documentation for the `Time` type][time.time] reveals that
 `Time` is just an alias for `Float` – a floating point number.
 In fact, a `Time` is just
-a number of milliseconds since midnight on 1 January, 1970.
+a number of milliseconds since midnight on 1 January, 1970 UTC.
 
-We can use some of the other functions in [the `Time` module][time]
+We can use some of the other functions in [the `Time` module][time.time]
 to convert such a value in to the hours, minutes and seconds
 we need for our clock.
 Let’s write a function to do this.
@@ -146,7 +146,7 @@ And then to get just
 the number of hours in the current day,
 the number of minutes in the current hour,
 and the number of seconds in the current minute,
-we can use the `%` operator:
+we can use the `%` operator (remainder):
 
 ```elm
 toClock : Time -> String

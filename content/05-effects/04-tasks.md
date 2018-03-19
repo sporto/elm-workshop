@@ -76,8 +76,8 @@ Great, we’re giving Elm a command!
 Once it has retrieved the current time,
 Elm will call our `update` function with a `NewTime` message
 containing the current `Time`.
-Let’s make our `update` function recognise this message
-with a `case` statement:
+Let’s make our `update` function handle this message
+in the a `case` statement:
 
 ```elm
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -88,7 +88,7 @@ update msg model =
 ```
 
 Using pattern matching,
-we assign the `Time` value in the message to a variable, `time`.
+we extract the `Time` value contained in the message and store it in a variable `time`.
 We then return an updated `model`
 with its time field set to `Just time`
 (a `Maybe` containing an actual `Time` value),

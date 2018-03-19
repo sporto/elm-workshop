@@ -18,13 +18,13 @@ or respond to other events
 
 Elm is very simple partly because it’s a pure functional language,
 where every function always returns the same value given the same arguments.
-But a function like JavaScript’s `Date.now`,
-which returns the current date and time (always a different value),
-can’t exist in Elm.
 This makes Elm functions very easy to reason about,
 to compose into complex programs,
 and to write automated tests for.
-But if you’re used to JavaScript,
+But a function like JavaScript’s `Date.now`,
+which returns the current date and time (always a different value),
+can’t exist in Elm.
+If you’re used to JavaScript,
 you might find Elm’s approach to
 accessing the outside world
 unfamiliar, even convoluted at first.
