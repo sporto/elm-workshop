@@ -7,7 +7,7 @@
     <meta name="description" content="Elm Workshop">
 <meta name="author" content="Sebastian Porto">
 
-    <title>Your first app :: Elm Workshop</title>
+    <title>Tasks :: Elm Workshop</title>
     <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon" />
     <link href="../css/nucleus.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
 	}
 </style>
   </head>
-  <body class="" data-url="/02-hello-world/02-first-app.html">
+  <body class="" data-url="/05-effects/04-tasks.html">
     <nav id="sidebar" class="">
 
 
@@ -176,7 +176,7 @@
   
     
     <li data-nav-id="/02-hello-world.html" class="dd-item 
-        parent
+        
         
         
         ">
@@ -187,7 +187,7 @@
         
 
           
-            <i class="fa fa-angle-down fa-lg category-icon"></i>
+            <i class="fa fa-angle-right fa-lg category-icon"></i>
           
 
         
@@ -230,7 +230,7 @@
   
     
       <li data-nav-id="/02-hello-world/02-first-app.html" class="dd-item
-     active
+     
       ">
         <a href="../02-hello-world/02-first-app.html">
         <span>Your first app</span> 
@@ -504,106 +504,6 @@
           
         
           
-            
-            
-
-
- 
-  
-    
-      <li data-nav-id="/04-interaction/01-start.html" class="dd-item
-     
-      ">
-        <a href="../04-interaction/01-start.html">
-        <span>Start</span> 
-        
-        </a></li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
-      <li data-nav-id="/04-interaction/02-flow.html" class="dd-item
-     
-      ">
-        <a href="../04-interaction/02-flow.html">
-        <span>Flow</span> 
-        
-        </a></li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
-      <li data-nav-id="/04-interaction/03-message.html" class="dd-item
-     
-      ">
-        <a href="../04-interaction/03-message.html">
-        <span>Messages</span> 
-        
-        </a></li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
-      <li data-nav-id="/04-interaction/04-update.html" class="dd-item
-     
-      ">
-        <a href="../04-interaction/04-update.html">
-        <span>Update</span> 
-        
-        </a></li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
- 
-  
-    
-      <li data-nav-id="/04-interaction/05-exercise.html" class="dd-item
-     
-      ">
-        <a href="../04-interaction/05-exercise.html">
-        <span>Exercise</span> 
-        
-        </a></li>
-     
-  
- 
-
-            
-          
         
         </ul>
               
@@ -619,7 +519,7 @@
   
     
     <li data-nav-id="/05-effects.html" class="dd-item 
-        
+        parent
         
         
         ">
@@ -630,7 +530,7 @@
         
 
           
-            <i class="fa fa-angle-right fa-lg category-icon"></i>
+            <i class="fa fa-angle-down fa-lg category-icon"></i>
           
 
         
@@ -713,7 +613,7 @@
   
     
       <li data-nav-id="/05-effects/04-tasks.html" class="dd-item
-     
+     active
       ">
         <a href="../05-effects/04-tasks.html">
         <span>Tasks</span> 
@@ -856,7 +756,7 @@
               
               
             <div id="top-github-link">
-              <a class="github-link" href="https://github.com/sporto/elm-workshop02-hello-world/02-first-app.md" target="blank">
+              <a class="github-link" href="https://github.com/sporto/elm-workshop05-effects/04-tasks.md" target="blank">
                 <i class="fa fa-code-fork"></i>
                 Edit page
               </a>
@@ -880,7 +780,7 @@
 
 
 
- <a href='../'></a> > <a href='../02-hello-world.html'>Hello World</a> > Your first app
+ <a href='../'></a> > <a href='../05-effects.html'>Tasks & Subscriptions</a> > Tasks
 
  
 
@@ -900,68 +800,107 @@
         
         <div id="body-inner">
           
-            <h1>Your first app</h1>
+            <h1>Tasks</h1>
           
 
 
 
 
-<p>In your project folder, create a new file named <code>Hello.elm</code>:</p>
+<p>Let’s return to our <code>init</code> function,
+which so far just creates a <code>Model</code> with a <code>time</code> value of <code>Nothing</code>:</p>
 
-<pre><code class="language-elm">module Hello exposing (..)
-
-import Html exposing (div, text)
-
-
-main =
-    div [] [ text &quot;Hello&quot; ]
+<pre><code class="language-elm">init : ( Model, Cmd Msg )
+init =
+    ( { time = Nothing }, Cmd.none )
 </code></pre>
 
-<p>Back at the terminal prompt, run:</p>
+<p><code>init</code> doesn’t just return that initial <code>Model</code> value, however.
+It also returns <code>Cmd.none</code>,
+just like every other <code>init</code> function we have written so far.
+<code>Cmd.none</code> tells Elm
+we don’t have a command for it to run right now.
+But there <em>is</em> something that we want Elm to do for us
+when our program first starts:
+we want it to fetch the current time for us!</p>
 
-<pre><code>elm-reactor
+<p>As we learned in <a href="http://example.org/05-effects/02-start.html">an earlier section</a>,
+functions like <code>Time.now</code>
+that fetch information from the outside world
+return a task
+that you can command Elm to perform.</p>
+
+<p>To do this, we’ll use the <code>Task.perform</code> function.
+First, let’s <code>import</code> the <code>Task</code> module
+at the top of our program:</p>
+
+<pre><code class="language-elm">import Task
 </code></pre>
 
-<p>Then open <a href="http://localhost:8000">http://localhost:8000</a> and click on <code>Hello.elm</code>. This should display the text “Hello” on an otherwise blank page. Excellent &ndash; we have our first Elm app!</p>
+<p>If we look at <a href="http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Task#perform">the documentation for <code>Task.perform</code></a>,
+you’ll see that it conveniently shows how to use it
+to fetch the current time from an <code>update</code> function.
+Using this as a guide,
+we can make our <code>init</code> function issue the same command.</p>
 
-<hr />
-
-<p>Let&rsquo;s break it down:</p>
-
-<pre><code class="language-elm">module Hello exposing (..)
+<pre><code class="language-elm">init : ( Model, Cmd Msg )
+init =
+    ( { time = Nothing }, Task.perform NewTime Time.now )
 </code></pre>
 
-<p>This file defines an Elm module, and this line states the module’s name. The module name must match the file name; so in this case, the file must be named <code>Hello.elm</code>.</p>
+<p>We’re getting close, but
+the compiler has a new <del>error message</del> piece of guidance for us.
+It doesn’t recognise <code>NewTime</code>,
+our first argument to <code>Task.perform</code>.
+This argument is
+the message we are asking Elm to send us
+when it finishes the task we are commanding it to perform.
+Elm doesn’t recognise it because
+we haven’t included <code>NewTime</code> as one of the possible values
+of our <code>Msg</code> type:</p>
 
-<pre><code class="language-elm">import Html exposing (div, text)
+<pre><code class="language-elm">type Msg
+   = Todo
 </code></pre>
 
-<p>This imports functions from the <code>Html</code> module. <code>div</code> and <code>text</code> are functions that produce HTML nodes.</p>
+<p>All we have there now is a <code>Todo</code> value that we aren’t using.
+Let’s replace it with <code>NewTime</code>,
+a message that we will expect to contain a <code>Time</code> value:</p>
 
-<pre><code class="language-elm">main =
+<pre><code class="language-elm">type Msg
+    = NewTime Time
 </code></pre>
 
-<p>Programs in Elm start with the <code>main</code> function. The Elm runtime uses this its entry point.</p>
+<p>Great, we’re giving Elm a command!
+Once it has retrieved the current time,
+Elm will call our <code>update</code> function with a <code>NewTime</code> message
+containing the current <code>Time</code>.
+Let’s make our <code>update</code> function handle this message
+in the a <code>case</code> statement:</p>
 
-<pre><code class="language-elm">div [] [ text &quot;Hello&quot; ]
+<pre><code class="language-elm">update : Msg -&gt; Model -&gt; ( Model, Cmd Msg )
+update msg model =
+    case msg of
+        NewTime time -&gt;
+            ( { model | time = Just time }, Cmd.none )
 </code></pre>
 
-<p>This is the body of our <code>main</code> function. It returns a <code>div</code> containing some plain text, equivalent to the following HTML:</p>
+<p>Using pattern matching,
+we extract the <code>Time</code> value contained in the message and store it in a variable <code>time</code>.
+We then return an updated <code>model</code>
+with its time field set to <code>Just time</code>
+(a <code>Maybe</code> containing an actual <code>Time</code> value),
+replacing the <code>Nothing</code> value set by <code>init</code>.</p>
 
-<pre><code class="language-html">&lt;div&gt;Hello&lt;/div&gt;
-</code></pre>
+<p>Notice that we still return <code>Cmd.none</code> here, too.
+Every time our <code>update</code> function is called,
+we have the option to give Elm another command,
+but for now we have nothing else that needs doing.</p>
 
-<p>The <code>div</code> function takes two arguments:</p>
-
-<ol>
-<li><p>a list of attributes (e.g. <code>class</code>, <code>id</code>, etc.)</p>
-
-<p>In this example, we have passed in an empty list (<code>[]</code>), so the <code>div</code> will have no attributes.</p></li>
-
-<li><p>a list of HTML child nodes</p>
-
-<p>In this example, we have passed a list with a single entry: a text node. To create the text node, we called the <code>text</code> function, passing it a string (<code>&quot;Hello&quot;</code>).</p></li>
-</ol>
+<p>Run our program now,
+and you’ll see it displays an interesting value:
+the word ‘Just’ followed by a large number.
+Before you proceed to the next section,
+can you guess why it’s showing this?</p>
 
 
 <footer class=" footline" >
@@ -1098,7 +1037,6 @@ main =
             
                 
                     
-                    
                 
                 
 
@@ -1114,9 +1052,6 @@ main =
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1144,22 +1079,6 @@ main =
                     
                     
 
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
                         
             
@@ -1208,86 +1127,6 @@ main =
                     
             
         
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
                         
             
@@ -1465,6 +1304,106 @@ main =
             
         
                     
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
             
             
@@ -1523,10 +1462,10 @@ main =
 
 
         
-            <a class="nav nav-prev" href="../02-hello-world/01-setup.html" title="Setup"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="../05-effects/03-maybes.html" title="Maybes"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="../02-hello-world/03-exercise.html" title="Exercise" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="../05-effects/05-format-time.html" title="Format Time" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 

@@ -19,6 +19,10 @@
   </url>
   
   <url>
+    <loc>http://example.org/05-effects/01-intro.html</loc>
+  </url>
+  
+  <url>
     <loc>http://example.org/01-introduction/01-what-is-elm.html</loc>
   </url>
   
@@ -28,6 +32,10 @@
   
   <url>
     <loc>http://example.org/02-hello-world.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/05-effects/02-start.html</loc>
   </url>
   
   <url>
@@ -51,6 +59,10 @@
   </url>
   
   <url>
+    <loc>http://example.org/05-effects/03-maybes.html</loc>
+  </url>
+  
+  <url>
     <loc>http://example.org/04-interaction/03-message.html</loc>
   </url>
   
@@ -71,11 +83,11 @@
   </url>
   
   <url>
-    <loc>http://example.org/04-interaction/04-update.html</loc>
+    <loc>http://example.org/05-effects/04-tasks.html</loc>
   </url>
   
   <url>
-    <loc>http://example.org/05-conclusion.html</loc>
+    <loc>http://example.org/04-interaction/04-update.html</loc>
   </url>
   
   <url>
@@ -83,11 +95,31 @@
   </url>
   
   <url>
+    <loc>http://example.org/05-effects/05-format-time.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/05-effects.html</loc>
+  </url>
+  
+  <url>
     <loc>http://example.org/03-tea/05-breakdown-view.html</loc>
   </url>
   
   <url>
+    <loc>http://example.org/06-conclusion.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/05-effects/06-subscriptions.html</loc>
+  </url>
+  
+  <url>
     <loc>http://example.org/03-tea/06-breakdown-update.html</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/05-effects/07-exercise.html</loc>
   </url>
   
   <url>

@@ -7,7 +7,7 @@
     <meta name="description" content="Elm Workshop">
 <meta name="author" content="Sebastian Porto">
 
-    <title>Your first app :: Elm Workshop</title>
+    <title>Start the Clock :: Elm Workshop</title>
     <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon" />
     <link href="../css/nucleus.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
 	}
 </style>
   </head>
-  <body class="" data-url="/02-hello-world/02-first-app.html">
+  <body class="" data-url="/05-effects/02-start.html">
     <nav id="sidebar" class="">
 
 
@@ -176,7 +176,7 @@
   
     
     <li data-nav-id="/02-hello-world.html" class="dd-item 
-        parent
+        
         
         
         ">
@@ -187,7 +187,7 @@
         
 
           
-            <i class="fa fa-angle-down fa-lg category-icon"></i>
+            <i class="fa fa-angle-right fa-lg category-icon"></i>
           
 
         
@@ -230,7 +230,7 @@
   
     
       <li data-nav-id="/02-hello-world/02-first-app.html" class="dd-item
-     active
+     
       ">
         <a href="../02-hello-world/02-first-app.html">
         <span>Your first app</span> 
@@ -619,7 +619,7 @@
   
     
     <li data-nav-id="/05-effects.html" class="dd-item 
-        
+        parent
         
         
         ">
@@ -630,7 +630,7 @@
         
 
           
-            <i class="fa fa-angle-right fa-lg category-icon"></i>
+            <i class="fa fa-angle-down fa-lg category-icon"></i>
           
 
         
@@ -673,7 +673,7 @@
   
     
       <li data-nav-id="/05-effects/02-start.html" class="dd-item
-     
+     active
       ">
         <a href="../05-effects/02-start.html">
         <span>Start the Clock</span> 
@@ -856,7 +856,7 @@
               
               
             <div id="top-github-link">
-              <a class="github-link" href="https://github.com/sporto/elm-workshop02-hello-world/02-first-app.md" target="blank">
+              <a class="github-link" href="https://github.com/sporto/elm-workshop05-effects/02-start.md" target="blank">
                 <i class="fa fa-code-fork"></i>
                 Edit page
               </a>
@@ -880,7 +880,7 @@
 
 
 
- <a href='../'></a> > <a href='../02-hello-world.html'>Hello World</a> > Your first app
+ <a href='../'></a> > <a href='../05-effects.html'>Tasks & Subscriptions</a> > Start the Clock
 
  
 
@@ -900,68 +900,150 @@
         
         <div id="body-inner">
           
-            <h1>Your first app</h1>
+            <h1>Start the Clock</h1>
           
 
 
 
 
-<p>In your project folder, create a new file named <code>Hello.elm</code>:</p>
+<p>Create a new Elm program, <code>Stopwatch.elm</code>.</p>
 
-<pre><code class="language-elm">module Hello exposing (..)
+<blockquote>
+<p><strong>Note:</strong> If you find typing all this out tedious,
+most Elm language support packages for popular editors include
+a snippet for a new program.
+In Visual Studio Code, for example,
+with the Elm extension installed,
+you can type <code>Html.program</code> in an empty file,
+hit Tab,
+and have all of this code generated for you automatically.</p>
+</blockquote>
 
-import Html exposing (div, text)
+<pre><code class="language-elm">module Stopwatch exposing (..)
+
+import Html exposing (Html, div, button, text)
 
 
+main : Program Never Model Msg
 main =
-    div [] [ text &quot;Hello&quot; ]
+    Html.program
+        { init = init
+        , update = update
+        , subscriptions = subscriptions
+        , view = view
+        }
+
+
+type Msg
+    = Todo
+
+
+type alias Model =
+    {}
+
+
+init : ( Model, Cmd Msg )
+init =
+    ( {}, Cmd.none )
+
+
+update : Msg -&gt; Model -&gt; ( Model, Cmd Msg )
+update msg model =
+    ( model, Cmd.none )
+
+
+subscriptions : Model -&gt; Sub Msg
+subscriptions model =
+    Sub.none
 </code></pre>
 
-<p>Back at the terminal prompt, run:</p>
+<p>All that’s missing from this program
+is a <code>view</code> function
+(the Elm compiler will point this out helpfully
+if you try to run it).</p>
 
-<pre><code>elm-reactor
+<p>Although our ultimate aim is to
+create a fully-functional stopwatch,
+we’ll start simple.
+Let’s make this program
+display the current time
+when it starts.
+Since Elm requires the <code>view</code> function to render our program
+using nothing but the current model,
+let’s assume our model will contain the current time,
+which we’ll convert to a string
+with <code>toString</code>:</p>
+
+<pre><code class="language-elm">view : Model -&gt; Html Msg
+view model =
+    text (toString model.time)
 </code></pre>
 
-<p>Then open <a href="http://localhost:8000">http://localhost:8000</a> and click on <code>Hello.elm</code>. This should display the text “Hello” on an otherwise blank page. Excellent &ndash; we have our first Elm app!</p>
+<p>Compile the program now
+(if you&rsquo;re using elm-reactor, just refresh your browser).
+The compiler will complain
+that our model doesn’t have a field named <code>time</code>.
+So, it’s clear what we need to do next:
+add that field to our <code>Model</code> type.</p>
 
-<hr />
-
-<p>Let&rsquo;s break it down:</p>
-
-<pre><code class="language-elm">module Hello exposing (..)
+<pre><code class="language-elm">type alias Model =
+    { time : Time }
 </code></pre>
 
-<p>This file defines an Elm module, and this line states the module’s name. The module name must match the file name; so in this case, the file must be named <code>Hello.elm</code>.</p>
+<p>In order to use the <code>Time</code> type,
+we’ll need to add an <code>import</code> for it
+to the top of this module:</p>
 
-<pre><code class="language-elm">import Html exposing (div, text)
+<pre><code class="language-elm">import Time exposing (Time)
 </code></pre>
 
-<p>This imports functions from the <code>Html</code> module. <code>div</code> and <code>text</code> are functions that produce HTML nodes.</p>
+<p>This process of pretending that something exists
+(in this example, <code>model.time</code> in our <code>view</code>)
+and then following the compiler’s directions to add it
+is a really nice way to add features to an Elm program.
+Try to think of every compiler error as
+helpful guidance about what to do next,
+not a complaint that you’re doing something wrong.</p>
 
-<pre><code class="language-elm">main =
+<p>With these changes in place,
+the compiler will have a new direction for us:
+the model returned by our <code>init</code> function
+is missing the <code>time</code> field.
+Let’s fix it!</p>
+
+<pre><code class="language-elm">init : ( Model, Cmd Msg )
+init =
+    ( { time = Time.now }, Cmd.none )
 </code></pre>
 
-<p>Programs in Elm start with the <code>main</code> function. The Elm runtime uses this its entry point.</p>
+<p>When our program starts up,
+we want the <code>init</code> function to
+set the <code>time</code> in our model to the current time.
+Looking at the <a href="http://package.elm-lang.org/packages/elm-lang/core/latest/">Elm Core API reference</a>,
+we can see that <a href="http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Time#now">the <code>Time</code> module has a <code>now</code> function</a>,
+so it seems natural to use that here.
+But the Elm compiler points out
+that <code>Time.now</code> doesn’t return a <code>Time</code>;
+it returns a <code>Task.Task x Time</code>.
+What is a <code>Task.Task x Time</code>?</p>
 
-<pre><code class="language-elm">div [] [ text &quot;Hello&quot; ]
-</code></pre>
+<p>Remember that as a pure functional language,
+Elm doesn’t have functions that
+return different values at different times
+as we might expect <code>Time.now</code> to do.
+Instead, <code>Time.now</code> returns a <em>task</em> that
+we can <em>command</em> the Elm runtime to perform.
+When it completes this task,
+the Elm runtime will send our <code>update</code> function a <em>message</em>
+with the current time.</p>
 
-<p>This is the body of our <code>main</code> function. It returns a <code>div</code> containing some plain text, equivalent to the following HTML:</p>
-
-<pre><code class="language-html">&lt;div&gt;Hello&lt;/div&gt;
-</code></pre>
-
-<p>The <code>div</code> function takes two arguments:</p>
-
-<ol>
-<li><p>a list of attributes (e.g. <code>class</code>, <code>id</code>, etc.)</p>
-
-<p>In this example, we have passed in an empty list (<code>[]</code>), so the <code>div</code> will have no attributes.</p></li>
-
-<li><p>a list of HTML child nodes</p>
-
-<p>In this example, we have passed a list with a single entry: a text node. To create the text node, we called the <code>text</code> function, passing it a string (<code>&quot;Hello&quot;</code>).</p></li>
-</ol>
+<p>We’ll see how to perform tasks like this shortly,
+but right now
+we need to get our <code>init</code> function to compile.
+If we’re going to command Elm to obtain the current time,
+that means our program’s initial model
+must represent the state where
+we are still waiting to receive that time.</p>
 
 
 <footer class=" footline" >
@@ -1098,7 +1180,6 @@ main =
             
                 
                     
-                    
                 
                 
 
@@ -1114,9 +1195,6 @@ main =
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1144,22 +1222,6 @@ main =
                     
                     
 
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
                         
             
@@ -1208,86 +1270,6 @@ main =
                     
             
         
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
                         
             
@@ -1465,6 +1447,106 @@ main =
             
         
                     
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
             
             
@@ -1523,10 +1605,10 @@ main =
 
 
         
-            <a class="nav nav-prev" href="../02-hello-world/01-setup.html" title="Setup"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="../05-effects/01-intro.html" title="The Outside World"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="../02-hello-world/03-exercise.html" title="Exercise" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="../05-effects/03-maybes.html" title="Maybes" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 

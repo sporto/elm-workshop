@@ -7,7 +7,7 @@
     <meta name="description" content="Elm Workshop">
 <meta name="author" content="Sebastian Porto">
 
-    <title>Your first app :: Elm Workshop</title>
+    <title>Exercise :: Elm Workshop</title>
     <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon" />
     <link href="../css/nucleus.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
 	}
 </style>
   </head>
-  <body class="" data-url="/02-hello-world/02-first-app.html">
+  <body class="" data-url="/05-effects/07-exercise.html">
     <nav id="sidebar" class="">
 
 
@@ -176,7 +176,7 @@
   
     
     <li data-nav-id="/02-hello-world.html" class="dd-item 
-        parent
+        
         
         
         ">
@@ -187,7 +187,7 @@
         
 
           
-            <i class="fa fa-angle-down fa-lg category-icon"></i>
+            <i class="fa fa-angle-right fa-lg category-icon"></i>
           
 
         
@@ -230,7 +230,7 @@
   
     
       <li data-nav-id="/02-hello-world/02-first-app.html" class="dd-item
-     active
+     
       ">
         <a href="../02-hello-world/02-first-app.html">
         <span>Your first app</span> 
@@ -619,7 +619,7 @@
   
     
     <li data-nav-id="/05-effects.html" class="dd-item 
-        
+        parent
         
         
         ">
@@ -630,7 +630,7 @@
         
 
           
-            <i class="fa fa-angle-right fa-lg category-icon"></i>
+            <i class="fa fa-angle-down fa-lg category-icon"></i>
           
 
         
@@ -773,7 +773,7 @@
   
     
       <li data-nav-id="/05-effects/07-exercise.html" class="dd-item
-     
+     active
       ">
         <a href="../05-effects/07-exercise.html">
         <span>Exercise</span> 
@@ -856,7 +856,7 @@
               
               
             <div id="top-github-link">
-              <a class="github-link" href="https://github.com/sporto/elm-workshop02-hello-world/02-first-app.md" target="blank">
+              <a class="github-link" href="https://github.com/sporto/elm-workshop05-effects/07-exercise.md" target="blank">
                 <i class="fa fa-code-fork"></i>
                 Edit page
               </a>
@@ -880,7 +880,7 @@
 
 
 
- <a href='../'></a> > <a href='../02-hello-world.html'>Hello World</a> > Your first app
+ <a href='../'></a> > <a href='../05-effects.html'>Tasks & Subscriptions</a> > Exercise
 
  
 
@@ -900,67 +900,47 @@
         
         <div id="body-inner">
           
-            <h1>Your first app</h1>
+            <h1>Exercise</h1>
           
 
 
 
 
-<p>In your project folder, create a new file named <code>Hello.elm</code>:</p>
+<p>With the power of subscriptions,
+we now have a running clock!</p>
 
-<pre><code class="language-elm">module Hello exposing (..)
+<p>More importantly, we understand
+how to issue commands to the outside world
+(like “tell me what time it is”).
+Other commands include
+<a href="http://package.elm-lang.org/packages/elm-lang/http/1.0.0/Http">sending an HTTP request</a>,
+<a href="http://package.elm-lang.org/packages/elm-lang/navigation/2.1.0/Navigation">navigating to a URL</a>,
+and even <a href="http://package.elm-lang.org/packages/elm-lang/dom/1.1.1/Dom-Scroll">scrolling the document</a>.</p>
 
-import Html exposing (div, text)
+<p>We also undersand
+how to subscribe to things happening outside our program
+(such as time passing).
+Other subscriptions include
+<a href="http://package.elm-lang.org/packages/elm-lang/mouse/1.0.1/Mouse">mouse gestures</a>,
+<a href="http://package.elm-lang.org/packages/elm-lang/http/1.0.0/http-progress">the progress of an HTTP request</a>,
+and even <a href="http://package.elm-lang.org/packages/elm-lang/animation-frame/1.0.1/AnimationFrame">the browser’s readiness to render a new animation frame</a>.</p>
 
+<p>With these new tools in hand,
+you have everything you need to
+turn this boring clock into a super cool stopwatch!
+That’s why you won’t find the code for the finished stopwatch here.
+It’s up to you to write it.</p>
 
-main =
-    div [] [ text &quot;Hello&quot; ]
-</code></pre>
-
-<p>Back at the terminal prompt, run:</p>
-
-<pre><code>elm-reactor
-</code></pre>
-
-<p>Then open <a href="http://localhost:8000">http://localhost:8000</a> and click on <code>Hello.elm</code>. This should display the text “Hello” on an otherwise blank page. Excellent &ndash; we have our first Elm app!</p>
-
-<hr />
-
-<p>Let&rsquo;s break it down:</p>
-
-<pre><code class="language-elm">module Hello exposing (..)
-</code></pre>
-
-<p>This file defines an Elm module, and this line states the module’s name. The module name must match the file name; so in this case, the file must be named <code>Hello.elm</code>.</p>
-
-<pre><code class="language-elm">import Html exposing (div, text)
-</code></pre>
-
-<p>This imports functions from the <code>Html</code> module. <code>div</code> and <code>text</code> are functions that produce HTML nodes.</p>
-
-<pre><code class="language-elm">main =
-</code></pre>
-
-<p>Programs in Elm start with the <code>main</code> function. The Elm runtime uses this its entry point.</p>
-
-<pre><code class="language-elm">div [] [ text &quot;Hello&quot; ]
-</code></pre>
-
-<p>This is the body of our <code>main</code> function. It returns a <code>div</code> containing some plain text, equivalent to the following HTML:</p>
-
-<pre><code class="language-html">&lt;div&gt;Hello&lt;/div&gt;
-</code></pre>
-
-<p>The <code>div</code> function takes two arguments:</p>
+<p>Here’s a recommended roadmap to follow:</p>
 
 <ol>
-<li><p>a list of attributes (e.g. <code>class</code>, <code>id</code>, etc.)</p>
-
-<p>In this example, we have passed in an empty list (<code>[]</code>), so the <code>div</code> will have no attributes.</p></li>
-
-<li><p>a list of HTML child nodes</p>
-
-<p>In this example, we have passed a list with a single entry: a text node. To create the text node, we called the <code>text</code> function, passing it a string (<code>&quot;Hello&quot;</code>).</p></li>
+<li>Add the number of milliseconds to the clock display (e.g. 23:59:59.999).</li>
+<li>Make the clock update as frequently as the browser can render animation frames. (Hint: See above.)</li>
+<li>Make the clock start counting from 00:00:00. (Hint: Your model will need two <code>Time</code> values.)</li>
+<li>Add a Start button. Wait until the user clicks it to start counting. (Hint: A <a href="http://elm-lang.org/docs/syntax#literals"><code>Bool</code> value</a> in your model might be useful.)</li>
+<li>Add a Reset button to set the count back to 00:00:00.</li>
+<li>While the clock is running, replace the Start button with a Stop button that pauses the count. (Hint: The hard part is not resetting to zero when you click Start again.)</li>
+<li><strong>Bonus points:</strong> Render the view as an analogue watch face using SVG.</li>
 </ol>
 
 
@@ -1098,7 +1078,6 @@ main =
             
                 
                     
-                    
                 
                 
 
@@ -1114,9 +1093,6 @@ main =
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1144,22 +1120,6 @@ main =
                     
                     
 
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
                         
             
@@ -1208,86 +1168,6 @@ main =
                     
             
         
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
                         
             
@@ -1465,6 +1345,22 @@ main =
             
         
                     
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
                         
             
             
@@ -1497,6 +1393,19 @@ main =
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
             
         
                     
@@ -1516,6 +1425,77 @@ main =
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
         
@@ -1523,10 +1503,10 @@ main =
 
 
         
-            <a class="nav nav-prev" href="../02-hello-world/01-setup.html" title="Setup"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="../05-effects/06-subscriptions.html" title="Subscriptions"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="../02-hello-world/03-exercise.html" title="Exercise" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="../06-conclusion.html" title="Conclusion" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 

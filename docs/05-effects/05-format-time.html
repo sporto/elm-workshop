@@ -7,7 +7,7 @@
     <meta name="description" content="Elm Workshop">
 <meta name="author" content="Sebastian Porto">
 
-    <title>Your first app :: Elm Workshop</title>
+    <title>Format Time :: Elm Workshop</title>
     <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon" />
     <link href="../css/nucleus.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
 	}
 </style>
   </head>
-  <body class="" data-url="/02-hello-world/02-first-app.html">
+  <body class="" data-url="/05-effects/05-format-time.html">
     <nav id="sidebar" class="">
 
 
@@ -176,7 +176,7 @@
   
     
     <li data-nav-id="/02-hello-world.html" class="dd-item 
-        parent
+        
         
         
         ">
@@ -187,7 +187,7 @@
         
 
           
-            <i class="fa fa-angle-down fa-lg category-icon"></i>
+            <i class="fa fa-angle-right fa-lg category-icon"></i>
           
 
         
@@ -230,7 +230,7 @@
   
     
       <li data-nav-id="/02-hello-world/02-first-app.html" class="dd-item
-     active
+     
       ">
         <a href="../02-hello-world/02-first-app.html">
         <span>Your first app</span> 
@@ -619,7 +619,7 @@
   
     
     <li data-nav-id="/05-effects.html" class="dd-item 
-        
+        parent
         
         
         ">
@@ -630,7 +630,7 @@
         
 
           
-            <i class="fa fa-angle-right fa-lg category-icon"></i>
+            <i class="fa fa-angle-down fa-lg category-icon"></i>
           
 
         
@@ -733,7 +733,7 @@
   
     
       <li data-nav-id="/05-effects/05-format-time.html" class="dd-item
-     
+     active
       ">
         <a href="../05-effects/05-format-time.html">
         <span>Format Time</span> 
@@ -856,7 +856,7 @@
               
               
             <div id="top-github-link">
-              <a class="github-link" href="https://github.com/sporto/elm-workshop02-hello-world/02-first-app.md" target="blank">
+              <a class="github-link" href="https://github.com/sporto/elm-workshop05-effects/05-format-time.md" target="blank">
                 <i class="fa fa-code-fork"></i>
                 Edit page
               </a>
@@ -880,7 +880,7 @@
 
 
 
- <a href='../'></a> > <a href='../02-hello-world.html'>Hello World</a> > Your first app
+ <a href='../'></a> > <a href='../05-effects.html'>Tasks & Subscriptions</a> > Format Time
 
  
 
@@ -900,68 +900,284 @@
         
         <div id="body-inner">
           
-            <h1>Your first app</h1>
+            <h1>Format Time</h1>
           
 
 
 
 
-<p>In your project folder, create a new file named <code>Hello.elm</code>:</p>
+<p>We can understand why our program is currently displaying
+‘Just’ followed by a large number
+by looking again at our <code>view</code> function:</p>
 
-<pre><code class="language-elm">module Hello exposing (..)
+<pre><code class="language-elm">view : Model -&gt; Html Msg
+view model =
+    case model.time of
+        Nothing -&gt;
+            text &quot;Loading…&quot;
 
-import Html exposing (div, text)
-
-
-main =
-    div [] [ text &quot;Hello&quot; ]
+        Just _ -&gt;
+            text (toString model.time)
 </code></pre>
 
-<p>Back at the terminal prompt, run:</p>
+<p>Since <code>model.time</code> no longer contains <code>Nothing</code>,
+the second branch of the <code>case</code> is now generating our view.
+That branch says
+to convert the value of <code>model.time</code> to a <code>String</code>
+and display it as HTML text.</p>
 
-<pre><code>elm-reactor
+<p>Remember, <code>model.time</code> isn’t just a <code>Time</code> value; it’s a <code>Maybe Time</code>,
+which means that its value is either <code>Nothing</code>
+or it’s <code>Just Time</code>
+(a <code>Time</code> value tagged with the <code>Just</code> constructor).
+So the word ‘Just’ in the output is just that tag,
+and the large number must be the <code>Time</code>.
+Indeed, if you refresh the page repeatedly,
+you’ll see the large number gets larger each time!</p>
+
+<p>We can use pattern matching
+in our <code>case</code> statement again
+to extract just the <code>Time</code> from <code>model.time</code>’s <code>Just Time</code> value.
+Replace the underscore
+(which tells Elm we aren’t interested in the value)
+in <code>Just _</code> with a variable name:</p>
+
+<pre><code class="language-elm">        Just time -&gt;
+            text (toString model.time)
 </code></pre>
 
-<p>Then open <a href="http://localhost:8000">http://localhost:8000</a> and click on <code>Hello.elm</code>. This should display the text “Hello” on an otherwise blank page. Excellent &ndash; we have our first Elm app!</p>
+<p>With the unwrapped <code>Time</code> value in <code>time</code>,
+we can now display <em>that</em> instead of <code>model.time</code>:</p>
 
-<hr />
-
-<p>Let&rsquo;s break it down:</p>
-
-<pre><code class="language-elm">module Hello exposing (..)
+<pre><code class="language-elm">        Just time -&gt;
+            text (toString time)
 </code></pre>
 
-<p>This file defines an Elm module, and this line states the module’s name. The module name must match the file name; so in this case, the file must be named <code>Hello.elm</code>.</p>
+<p>Now our program displays just the large number
+that represents the current time.
+The <a href="http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Time#Time">documentation for the <code>Time</code> type</a> reveals that
+<code>Time</code> is just an alias for <code>Float</code> – a floating point number.
+In fact, a <code>Time</code> is just
+a number of milliseconds since midnight on 1 January, 1970 UTC.</p>
 
-<pre><code class="language-elm">import Html exposing (div, text)
+<p>We can use some of the other functions in <a href="http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Time#Time">the <code>Time</code> module</a>
+to convert such a value in to the hours, minutes and seconds
+we need for our clock.
+Let’s write a function to do this.
+If you’re feeling confident,
+go ahead and try writing it yourself before you read on.</p>
+
+<p>Here’s what a reasonable first attempt might look like:</p>
+
+<pre><code class="language-elm">toClock : Time -&gt; String
+toClock time =
+    let
+        hours =
+            Time.inHours time
+
+        minutes =
+            Time.inMinutes time
+
+        seconds =
+            Time.inSeconds time
+    in
+        hours ++ &quot;:&quot; ++ minutes ++ &quot;:&quot; ++ seconds
 </code></pre>
 
-<p>This imports functions from the <code>Html</code> module. <code>div</code> and <code>text</code> are functions that produce HTML nodes.</p>
+<p>Here we’ve used a <code>let</code> block
+to calculate the <code>hours</code>, <code>minutes</code> and <code>seconds</code> separately,
+then we’ve tried to return these
+in a single <code>String</code>.</p>
 
-<pre><code class="language-elm">main =
+<p>If we try to run this,
+the compiler reminds us that <code>++</code>
+only works with <code>String</code>s
+and we’ve given it a <code>Float</code>.
+We can use <code>toString</code> to
+perform the necessary conversions:</p>
+
+<pre><code class="language-elm">toClock : Time -&gt; String
+toClock time =
+    let
+        hours =
+            toString (Time.inHours time)
+
+        minutes =
+            toString (Time.inMinutes time)
+
+        seconds =
+            toString (Time.inSeconds time)
+    in
+        hours ++ &quot;:&quot; ++ minutes ++ &quot;:&quot; ++ seconds
 </code></pre>
 
-<p>Programs in Elm start with the <code>main</code> function. The Elm runtime uses this its entry point.</p>
+<p>This will run,
+but the numbers aren’t quite what we’re after.
+First of all,
+because the <code>Time</code> functions return
+floating point numbers (<code>Float</code>) and not integers (<code>Int</code>),
+our values are fractional hours, minutes and seconds
+(with digits after the decimal point).
+We can round these down with <code>floor</code>:</p>
 
-<pre><code class="language-elm">div [] [ text &quot;Hello&quot; ]
+<pre><code class="language-elm">toClock : Time -&gt; String
+toClock time =
+    let
+        hours =
+            toString (floor (Time.inHours time))
+
+        minutes =
+            toString (floor (Time.inMinutes time))
+
+        seconds =
+            toString (floor (Time.inSeconds time))
+    in
+        hours ++ &quot;:&quot; ++ minutes ++ &quot;:&quot; ++ seconds
 </code></pre>
 
-<p>This is the body of our <code>main</code> function. It returns a <code>div</code> containing some plain text, equivalent to the following HTML:</p>
+<blockquote>
+<p><strong>Note:</strong> Documentation for built-in functions
+like <code>floor</code> and <code>toString</code>
+may be found in <a href="http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Basics">the <code>Basics</code> module</a>.</p>
+</blockquote>
 
-<pre><code class="language-html">&lt;div&gt;Hello&lt;/div&gt;
+<p>And then to get just
+the number of hours in the current day,
+the number of minutes in the current hour,
+and the number of seconds in the current minute,
+we can use the <code>%</code> operator (remainder):</p>
+
+<pre><code class="language-elm">toClock : Time -&gt; String
+toClock time =
+    let
+        hours =
+            toString (floor (Time.inHours time) % 24)
+
+        minutes =
+            toString (floor (Time.inMinutes time) % 60)
+
+        seconds =
+            toString (floor (Time.inSeconds time) % 60)
+    in
+        hours ++ &quot;:&quot; ++ minutes ++ &quot;:&quot; ++ seconds
 </code></pre>
 
-<p>The <code>div</code> function takes two arguments:</p>
+<p>If you run the program now,
+you’ll probably notice that our <code>Time</code> value
+actually represents the current UTC time,
+not the time in your local time zone.
+If we were actually trying to build a boring, old clock
+(and not a totally awesome stopwatch)
+we could use Elm’s <a href="http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Date"><code>Date</code> module</a>
+to perform a <code>Date.now</code> task to fetch a current <code>Date</code>
+(which like JavaScript’s <code>Date.now</code> returns a local date and time).
+The current UTC time is all we need for our stopwatch, though.</p>
 
-<ol>
-<li><p>a list of attributes (e.g. <code>class</code>, <code>id</code>, etc.)</p>
+<p>Finally, we want to format each of the three numbers
+with a leading zero if it happens to be a single digit.
+We can use <a href="http://package.elm-lang.org/packages/elm-lang/core/5.1.1/String#padLeft"><code>String.padLeft</code></a> for this:</p>
 
-<p>In this example, we have passed in an empty list (<code>[]</code>), so the <code>div</code> will have no attributes.</p></li>
+<pre><code class="language-elm">toClock : Time -&gt; String
+toClock time =
+    let
+        hours =
+            String.padLeft 2 '0' (toString (floor (Time.inHours time) % 24))
 
-<li><p>a list of HTML child nodes</p>
+        minutes =
+            String.padLeft 2 '0' (toString (floor (Time.inMinutes time) % 60))
 
-<p>In this example, we have passed a list with a single entry: a text node. To create the text node, we called the <code>text</code> function, passing it a string (<code>&quot;Hello&quot;</code>).</p></li>
-</ol>
+        seconds =
+            String.padLeft 2 '0' (toString (floor (Time.inSeconds time) % 60))
+    in
+        hours ++ &quot;:&quot; ++ minutes ++ &quot;:&quot; ++ seconds
+</code></pre>
+
+<p>If you’re starting to find those three expressions
+difficult to read with all those parentheses,
+congratulations – you’re a human being (not a compiler)!
+We can use Elm’s <strong>pipeline operator</strong> (<code>|&gt;</code>) to
+make these expressions much more readable.</p>
+
+<pre><code class="language-elm">        hours =
+            Time.inHours time
+                |&gt; floor
+                |&gt; (\hours -&gt; hours % 24)
+                |&gt; toString
+                |&gt; String.padLeft 2 '0'
+</code></pre>
+
+<p><code>|&gt;</code> passes the value on its left into the function on its right.
+This lets us build a complex expression as
+a series of transformations.
+We start with <code>Time.inHours time</code>
+(the number of hours in <code>time</code>, as a <code>Float</code>)
+then we pass that value as an argument to <code>floor</code>
+to round it down to the nearest integer.</p>
+
+<p>We now have a whole number of hours, as an <code>Int</code>.
+To get the number of hours in the current day,
+we want the value of the expression <code>hours % 24</code>.
+To use this expression as a function in our pipeline,
+we write an <strong>anonymous function</strong>
+(just like a JavaScript arrow function)
+that takes an <code>hours</code> argument and returns <code>hours % 24</code>.
+In Elm, we write this as <code>\hours -&gt; hours % 24</code>.</p>
+
+<p>Next, we convert our <code>Int</code> to a <code>String</code> with <code>toString</code>,
+and finally we pad it with a leading zero if necessary
+with <code>String.padLeft 2 '0'</code>.
+Note that <code>String.padLeft</code> takes three arguments,
+so the expression <code>String.padLeft 2 '0'</code> (with just two arguments)
+acts as a function that takes a single argument
+(the value provided by the pipeline operator).
+This technique of giving a function only some of its arguments
+is called <strong>partial application</strong>,
+and it’s especially handy when used within a pipeline like this.</p>
+
+<p>Go ahead and repeat the same pattern for minutes and seconds.
+There should be no surprises here,
+so see if you can do it on your own before you
+refer to the finished function:</p>
+
+<pre><code class="language-elm">toClock : Time -&gt; String
+toClock time =
+    let
+        hours =
+            Time.inHours time
+                |&gt; floor
+                |&gt; (\hours -&gt; hours % 24)
+                |&gt; toString
+                |&gt; String.padLeft 2 '0'
+
+        minutes =
+            Time.inMinutes time
+                |&gt; floor
+                |&gt; (\minutes -&gt; minutes % 60)
+                |&gt; toString
+                |&gt; String.padLeft 2 '0'
+
+        seconds =
+            Time.inSeconds time
+                |&gt; floor
+                |&gt; (\seconds -&gt; seconds % 60)
+                |&gt; toString
+                |&gt; String.padLeft 2 '0'
+    in
+        hours ++ &quot;:&quot; ++ minutes ++ &quot;:&quot; ++ seconds
+</code></pre>
+
+<blockquote>
+<p><strong>Note:</strong> These three pipelines are very similar.
+You might like to try to find a way to eliminate the repitition,
+say by writing a <code>toClockComponent</code> function.
+You might decide that
+you prefer the clarity of this version, though,
+and that’s fine too.</p>
+</blockquote>
+
+<p>Our clock’s looking pretty good now,
+but if we’re going to turn it into a stopwatch,
+we’ll need to learn to make it count up!</p>
 
 
 <footer class=" footline" >
@@ -1098,7 +1314,6 @@ main =
             
                 
                     
-                    
                 
                 
 
@@ -1114,9 +1329,6 @@ main =
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1144,22 +1356,6 @@ main =
                     
                     
 
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
                         
             
@@ -1208,86 +1404,6 @@ main =
                     
             
         
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
                         
             
@@ -1465,6 +1581,22 @@ main =
             
         
                     
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
                         
             
             
@@ -1497,6 +1629,90 @@ main =
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1523,10 +1739,10 @@ main =
 
 
         
-            <a class="nav nav-prev" href="../02-hello-world/01-setup.html" title="Setup"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="../05-effects/04-tasks.html" title="Tasks"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="../02-hello-world/03-exercise.html" title="Exercise" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="../05-effects/06-subscriptions.html" title="Subscriptions" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tasks &amp; Subscriptions on Elm Workshop</title>
+    <link>http://example.org/05-effects.html</link>
+    <description>Recent content in Tasks &amp; Subscriptions on Elm Workshop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://example.org/05-effects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The Outside World</title>
+      <link>http://example.org/05-effects/01-intro.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/05-effects/01-intro.html</guid>
+      <description>So far, the Elm programs we have written have all been self-contained. They started with a static model (like the number zero) and updated it in response to user interaction with your view (like a button click). In real-world projects, you will usually want to fetch data from or send data to an outside source (like a server API), or respond to other events (like the passage of time).
+Elm is very simple partly because it’s a pure functional language, where every function always returns the same value given the same arguments.</description>
+    </item>
+    
+    <item>
+      <title>Start the Clock</title>
+      <link>http://example.org/05-effects/02-start.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/05-effects/02-start.html</guid>
+      <description>Create a new Elm program, Stopwatch.elm.
+ Note: If you find typing all this out tedious, most Elm language support packages for popular editors include a snippet for a new program. In Visual Studio Code, for example, with the Elm extension installed, you can type Html.program in an empty file, hit Tab, and have all of this code generated for you automatically.
+ module Stopwatch exposing (..) import Html exposing (Html, div, button, text) main : Program Never Model Msg main = Html.</description>
+    </item>
+    
+    <item>
+      <title>Maybes</title>
+      <link>http://example.org/05-effects/03-maybes.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/05-effects/03-maybes.html</guid>
+      <description>If this were JavaScript, and we wanted to represent the state where we are waiting to get the current time, we might write this init function:
+init : ( Model, Cmd Msg ) init = ( { time = null }, Cmd.none )  But Elm doesn’t let you set any old variable to a “nothing” value like this. The ability to do this in JavaScript is by far the greatest source of bugs in JavaScript programs.</description>
+    </item>
+    
+    <item>
+      <title>Tasks</title>
+      <link>http://example.org/05-effects/04-tasks.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/05-effects/04-tasks.html</guid>
+      <description>Let’s return to our init function, which so far just creates a Model with a time value of Nothing:
+init : ( Model, Cmd Msg ) init = ( { time = Nothing }, Cmd.none )  init doesn’t just return that initial Model value, however. It also returns Cmd.none, just like every other init function we have written so far. Cmd.none tells Elm we don’t have a command for it to run right now.</description>
+    </item>
+    
+    <item>
+      <title>Format Time</title>
+      <link>http://example.org/05-effects/05-format-time.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/05-effects/05-format-time.html</guid>
+      <description>We can understand why our program is currently displaying ‘Just’ followed by a large number by looking again at our view function:
+view : Model -&amp;gt; Html Msg view model = case model.time of Nothing -&amp;gt; text &amp;quot;Loading…&amp;quot; Just _ -&amp;gt; text (toString model.time)  Since model.time no longer contains Nothing, the second branch of the case is now generating our view. That branch says to convert the value of model.</description>
+    </item>
+    
+    <item>
+      <title>Subscriptions</title>
+      <link>http://example.org/05-effects/06-subscriptions.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/05-effects/06-subscriptions.html</guid>
+      <description>Rather than a static view of the time at which we loaded the page, we’d like our clock to update as the seconds tick by. We already know how to command Elm to fetch the current time, but we can only issue commands in our init function (when our program starts up), and in our update function (in response to a message).
+What we need is a way to command Elm to send you not just a single message with the current Time, but to send you a new message once every second.</description>
+    </item>
+    
+    <item>
+      <title>Exercise</title>
+      <link>http://example.org/05-effects/07-exercise.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/05-effects/07-exercise.html</guid>
+      <description>With the power of subscriptions, we now have a running clock!
+More importantly, we understand how to issue commands to the outside world (like “tell me what time it is”). Other commands include sending an HTTP request, navigating to a URL, and even scrolling the document.
+We also undersand how to subscribe to things happening outside our program (such as time passing). Other subscriptions include mouse gestures, the progress of an HTTP request, and even the browser’s readiness to render a new animation frame.</description>
+    </item>
+    
+  </channel>
+</rss>

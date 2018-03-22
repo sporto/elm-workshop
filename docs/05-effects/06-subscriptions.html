@@ -7,7 +7,7 @@
     <meta name="description" content="Elm Workshop">
 <meta name="author" content="Sebastian Porto">
 
-    <title>Your first app :: Elm Workshop</title>
+    <title>Subscriptions :: Elm Workshop</title>
     <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon" />
     <link href="../css/nucleus.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
 	}
 </style>
   </head>
-  <body class="" data-url="/02-hello-world/02-first-app.html">
+  <body class="" data-url="/05-effects/06-subscriptions.html">
     <nav id="sidebar" class="">
 
 
@@ -176,7 +176,7 @@
   
     
     <li data-nav-id="/02-hello-world.html" class="dd-item 
-        parent
+        
         
         
         ">
@@ -187,7 +187,7 @@
         
 
           
-            <i class="fa fa-angle-down fa-lg category-icon"></i>
+            <i class="fa fa-angle-right fa-lg category-icon"></i>
           
 
         
@@ -230,7 +230,7 @@
   
     
       <li data-nav-id="/02-hello-world/02-first-app.html" class="dd-item
-     active
+     
       ">
         <a href="../02-hello-world/02-first-app.html">
         <span>Your first app</span> 
@@ -619,7 +619,7 @@
   
     
     <li data-nav-id="/05-effects.html" class="dd-item 
-        
+        parent
         
         
         ">
@@ -630,7 +630,7 @@
         
 
           
-            <i class="fa fa-angle-right fa-lg category-icon"></i>
+            <i class="fa fa-angle-down fa-lg category-icon"></i>
           
 
         
@@ -753,7 +753,7 @@
   
     
       <li data-nav-id="/05-effects/06-subscriptions.html" class="dd-item
-     
+     active
       ">
         <a href="../05-effects/06-subscriptions.html">
         <span>Subscriptions</span> 
@@ -856,7 +856,7 @@
               
               
             <div id="top-github-link">
-              <a class="github-link" href="https://github.com/sporto/elm-workshop02-hello-world/02-first-app.md" target="blank">
+              <a class="github-link" href="https://github.com/sporto/elm-workshop05-effects/06-subscriptions.md" target="blank">
                 <i class="fa fa-code-fork"></i>
                 Edit page
               </a>
@@ -880,7 +880,7 @@
 
 
 
- <a href='../'></a> > <a href='../02-hello-world.html'>Hello World</a> > Your first app
+ <a href='../'></a> > <a href='../05-effects.html'>Tasks & Subscriptions</a> > Subscriptions
 
  
 
@@ -900,68 +900,88 @@
         
         <div id="body-inner">
           
-            <h1>Your first app</h1>
+            <h1>Subscriptions</h1>
           
 
 
 
 
-<p>In your project folder, create a new file named <code>Hello.elm</code>:</p>
+<p>Rather than a static view of
+the time at which we loaded the page,
+we’d like our clock to update
+as the seconds tick by.
+We already know how to command Elm to fetch the current time,
+but we can only issue commands
+in our <code>init</code> function (when our program starts up),
+and in our <code>update</code> function (in response to a message).</p>
 
-<pre><code class="language-elm">module Hello exposing (..)
+<p>What we need is a way to command Elm to send you
+not just a <em>single</em> message with the current <code>Time</code>,
+but to send you a new message once every second.
+This is what <strong>subscriptions</strong> are for.</p>
 
-import Html exposing (div, text)
+<p>Every Elm program we’ve written so far has contained
+a <code>subscriptions</code> function that returns <code>Sub.none</code>:</p>
 
-
-main =
-    div [] [ text &quot;Hello&quot; ]
+<pre><code class="language-elm">subscriptions : Model -&gt; Sub Msg
+subscriptions model =
+    Sub.none
 </code></pre>
 
-<p>Back at the terminal prompt, run:</p>
+<p>Just as <code>Cmd.none</code> means “I don’t have a command for Elm right now”,
+<code>Sub.none</code> means “There’s nothing I want Elm to subscribe me to right now.”</p>
 
-<pre><code>elm-reactor
+<p>Elm’s core modules offer several functions for creating subscriptions.
+<a href="http://package.elm-lang.org/packages/elm-lang/core/5.1.1/Time#every"><code>Time.every</code></a>, for example, lets us subscribe to
+receive a message with the current <code>Time</code>
+every second:</p>
+
+<pre><code class="language-elm">subscriptions : Model -&gt; Sub Msg
+subscriptions model =
+    Time.every Time.second NewTime
 </code></pre>
 
-<p>Then open <a href="http://localhost:8000">http://localhost:8000</a> and click on <code>Hello.elm</code>. This should display the text “Hello” on an otherwise blank page. Excellent &ndash; we have our first Elm app!</p>
+<p>Run your program now, and our clock should be ticking!</p>
 
-<hr />
+<p><code>Time.every</code> uses JavaScript’s <code>setInterval</code> function.
+As you may know, <code>setInterval</code> isn’t guaranteed to run exactly on time,
+so to make sure our clock doesn’t skip any seconds,
+we can subscribe to more frequent events,
+say one every 100 milliseconds:</p>
 
-<p>Let&rsquo;s break it down:</p>
-
-<pre><code class="language-elm">module Hello exposing (..)
+<pre><code class="language-elm">subscriptions : Model -&gt; Sub Msg
+subscriptions model =
+    Time.every (100 * Time.millisecond) NewTime
 </code></pre>
 
-<p>This file defines an Elm module, and this line states the module’s name. The module name must match the file name; so in this case, the file must be named <code>Hello.elm</code>.</p>
+<p>To confirm this change is working,
+look at the message count on the Elm debugger
+at the bottom of your browser window.
+It should be counting up roughly ten times per second.</p>
 
-<pre><code class="language-elm">import Html exposing (div, text)
+<p>Notice that the <code>subscriptions</code> function
+receives your program’s current model as an argument.
+Elm calls <code>subscriptions</code>
+whenever your program makes a change to its model.
+This gives you the freedom to vary your subscriptions
+in response to changes in the state of your program.</p>
+
+<p>For example, we could wait until
+our program had received the first <code>Time</code> value
+(from the command issued by our <code>init</code> function)
+before subscribing to further time updates:</p>
+
+<pre><code class="language-elm">subscriptions : Model -&gt; Sub Msg
+subscriptions model =
+    case model.time of
+        Nothing -&gt;
+            Sub.none
+
+        Just _ -&gt;
+            Time.every (100 * Time.millisecond) NewTime
 </code></pre>
 
-<p>This imports functions from the <code>Html</code> module. <code>div</code> and <code>text</code> are functions that produce HTML nodes.</p>
-
-<pre><code class="language-elm">main =
-</code></pre>
-
-<p>Programs in Elm start with the <code>main</code> function. The Elm runtime uses this its entry point.</p>
-
-<pre><code class="language-elm">div [] [ text &quot;Hello&quot; ]
-</code></pre>
-
-<p>This is the body of our <code>main</code> function. It returns a <code>div</code> containing some plain text, equivalent to the following HTML:</p>
-
-<pre><code class="language-html">&lt;div&gt;Hello&lt;/div&gt;
-</code></pre>
-
-<p>The <code>div</code> function takes two arguments:</p>
-
-<ol>
-<li><p>a list of attributes (e.g. <code>class</code>, <code>id</code>, etc.)</p>
-
-<p>In this example, we have passed in an empty list (<code>[]</code>), so the <code>div</code> will have no attributes.</p></li>
-
-<li><p>a list of HTML child nodes</p>
-
-<p>In this example, we have passed a list with a single entry: a text node. To create the text node, we called the <code>text</code> function, passing it a string (<code>&quot;Hello&quot;</code>).</p></li>
-</ol>
+<p>Now that we have a ticking clock, it’s time to turn it into a stopwatch!</p>
 
 
 <footer class=" footline" >
@@ -1098,7 +1118,6 @@ main =
             
                 
                     
-                    
                 
                 
 
@@ -1114,9 +1133,6 @@ main =
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1144,22 +1160,6 @@ main =
                     
                     
 
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
                         
             
@@ -1208,86 +1208,6 @@ main =
                     
             
         
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
                         
             
@@ -1465,6 +1385,22 @@ main =
             
         
                     
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
                         
             
             
@@ -1497,6 +1433,90 @@ main =
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1523,10 +1543,10 @@ main =
 
 
         
-            <a class="nav nav-prev" href="../02-hello-world/01-setup.html" title="Setup"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="../05-effects/05-format-time.html" title="Format Time"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="../02-hello-world/03-exercise.html" title="Exercise" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="../05-effects/07-exercise.html" title="Exercise" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 
