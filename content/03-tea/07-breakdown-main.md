@@ -37,7 +37,7 @@ Subscriptions is how Elm programs listen for external events, for example:
 
 The `subscriptions` function takes the program’s current model as an argument, and returns a list of the subscriptions we wish to receive messages from. The Elm Runtime calls this function automatically every time our program’s model changes, to give our program an opportunity to change its subscriptions in response.
 
-In this simple example, we have no need tor receive messages from the outside world, so we simply return `Sub.none` regardless of the value of our model.
+In this simple example, we have no need to receive messages from the outside world, so we simply return `Sub.none` regardless of the value of our model.
 
 ## Html.program
 
